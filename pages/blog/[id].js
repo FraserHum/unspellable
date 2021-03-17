@@ -14,7 +14,7 @@ export async function getStaticProps({ params }) {
     }
 }
 export async function getStaticPaths() {
-    const paths = await getAllEpisodeIds()
+    const paths = await getAllBlogPostIds()
     return {
         paths,
         fallback: false,
@@ -22,6 +22,7 @@ export async function getStaticPaths() {
 }
 
 export default function Episode({ episodeData }) {
+    console.log(episodeData)
     return (
         <DefaultLayout>
             <Head>
