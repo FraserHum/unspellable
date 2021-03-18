@@ -13,8 +13,23 @@ export const linkResolver = (doc) => {
     if (doc.type === 'episode') {
         return `/episodes/${doc.uid}`
     }
-    if (doc.type === 'episodes') {
+    if (doc.uid === 'episodes') {
         return '/episodes'
+    }
+    if (doc.uid === 'blog') {
+        return '/blog'
+    }
+    if (doc.type === 'blog_post') {
+        return `/blog/${doc.uid}`
+    }
+    if (doc.uid === 'art') {
+        return '/art'
+    }
+    if (doc.uid === 'world') {
+        return '/world'
+    }
+    if (doc.uid === 'about') {
+        return '/about'
     }
 
     return `/`
@@ -25,8 +40,23 @@ export const hrefResolver = (doc) => {
     if (doc.type === 'episode') {
         return '/episodes/[uid]'
     }
-    if (doc.type === 'episodes') {
+    if (doc.uid === 'episodes') {
         return '/episodes'
+    }
+    if (doc.type === 'blog_post') {
+        return '/blog/[uid]'
+    }
+    if (doc.uid === 'blog') {
+        return '/blog'
+    }
+    if (doc.uid === 'art') {
+        return '/art'
+    }
+    if (doc.uid === 'world') {
+        return '/world'
+    }
+    if (doc.uid === 'about') {
+        return '/about'
     }
     return '/'
 }

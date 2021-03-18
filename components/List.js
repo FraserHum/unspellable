@@ -1,15 +1,20 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable import/prefer-default-export */
 import React from 'react'
-import { ListStyles } from '../styles'
-import utilStyles from '../styles/utils.module.css'
 import { EpisodeCard } from './EpisodeCard'
+import { BlogPostCard } from './BlogPostCard'
+import styled from 'styled-components'
+
+const StyledList = styled.ul`
+list-style: none;
+width: 50vw;
+`
 
 export const List = ({ type, listElementsData }) => {
     let cards
     if (type === 'episodes') {
         cards = listElementsData.map(({ id, date, title, imageURL }) => (
-            <li className={utilStyles.listItem} key={id}>
+            <li key={id}>
                 <EpisodeCard
                     id={id}
                     date={date}
@@ -20,16 +25,16 @@ export const List = ({ type, listElementsData }) => {
         ))
     } else if (type === 'blog') {
         cards = listElementsData.map(({ id, date, title, subject }) => (
-            <li className={utilStyles.listItem} key={id}>
-                <blogCard id={id} date={date} title={title} subject={subject} />
+            <li key={id}>
+                <BlogPostCard id={id} date={date} title={title} subject={subject} />
             </li>
         ))
     }
 
     return (
-        <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-            <h2 className={utilStyles.headingLg}>{type}</h2>
-            <ul className={utilStyles.list}>{cards}</ul>
+        <section >
+            <h2 >{type}</h2>
+            <StyledList >{cards}</StyledList>
         </section>
     )
 }

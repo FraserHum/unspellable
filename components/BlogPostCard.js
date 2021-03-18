@@ -1,19 +1,27 @@
 import React from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
-import { episodeListStyles } from '../styles'
-import utilStyles from '../styles/utils.module.css'
+import styled from 'styled-components'
+import {Date} from 'utils'
+
+const BlogPostCardcontainer = styled.div`
+color: palevioletred;
+font-size: 1em;
+margin: 1em;
+padding: 0.25em 1em;
+border: 2px solid palevioletred;
+border-radius: 3px;
+`
 
 export const BlogPostCard = ({ id, date, title, subject }) => (
-    <div>
+    <BlogPostCardcontainer>
         <Link href={`/blog/${id}`}>
             <a>{title}</a>
         </Link>
         <br />
         <h3> {subject}</h3>
         <br />
-        <small className={utilStyles.lightText}>
+        <small >
             <Date dateString={date} />
         </small>
-    </div>
+    </BlogPostCardcontainer>
 )

@@ -21,32 +21,17 @@ export async function getStaticPaths() {
     }
 }
 
-export default function Episode({ episodeData }) {
-    console.log(episodeData)
+export default function BlogPost({ blogPostData }) {
     return (
         <DefaultLayout>
             <Head>
-                <title>{episodeData[0].data.episode_title[0].text}</title>
+                <title>{blogPostData[0].data.title[0].text}</title>
             </Head>
-            {episodeData[0].data.episode_title[0].text}
+            {blogPostData[0].data.title[0].text}
             <br />
-            <Image
-                priority
-                src={episodeData[0].data.episode_image.url}
-                className={utilStyles.borderCircle}
-                height={144}
-                width={144}
-            />
+            {blogPostData.date}
             <br />
-            {episodeData.date}
-            <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/IO9XlQrEt2Y"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-            />
+            <SliceZone sliceZone={blogPostData.data.page_content} />
         </DefaultLayout>
     )
 }

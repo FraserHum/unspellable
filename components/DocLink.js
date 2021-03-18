@@ -6,6 +6,8 @@ import { Link } from 'prismic-reactjs'
 
 import { linkResolver, hrefResolver } from '../prismic-configuration'
 
+import styled from 'styled-components'
+
 // Main DocLink component function for generating links to other pages on this site
 const DocLink = ({ children, link, linkClass }) => {
     if (link) {

@@ -5,9 +5,14 @@ import { RichText } from 'prismic-reactjs'
 
 import { DocLink } from 'components'
 import { headerStyles } from 'styles'
+import styled from 'styled-components'
+
+const StyledHeader = styled.header`
+background-color: transparent;
+`
 
 const Header = ({ menu }) => (
-    <header className="site-header">
+    <StyledHeader className="site-header">
         <NextLink href="/">
             <a>
                 <div className="logo">Unspellable</div>
@@ -17,7 +22,7 @@ const Header = ({ menu }) => (
         <style jsx global>
             {headerStyles}
         </style>
-    </header>
+    </StyledHeader>
 )
 
 const MenuLinks = ({ menu }) => {

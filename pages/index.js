@@ -4,9 +4,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Header, HomeBanner } from 'components'
+import { Header, Banner, Container } from 'components'
 import DefaultLayout from 'layouts'
-import utilStyles from '../styles/utils.module.css'
 import Date from '../utils/date'
 
 import Client from '../utils/prismicHelpers'
@@ -33,20 +32,10 @@ export default function Home({ doc, menu }) {
         <DefaultLayout home>
             <div className="homepage">
                 <Header menu={menu} />
-                <HomeBanner banner={doc.data.homepage_banner[0]} />
-                <SliceZone sliceZone={doc.data.page_content} />
-
-                <section className={utilStyles.headingMd}>
-                    <p>
-                        Welcome to the home of our D&D podcast! Here you will
-                        find all our episodes as well as aditional content about
-                        us and the world we play in
-                    </p>
-                    <p>
-                        This podcast is intended for mature audicences, check
-                        episode notes for trigger warnings
-                    </p>
-                </section>
+                <Banner banner={doc.data.homepage_banner[0]} />
+                <Container>
+                    <SliceZone sliceZone={doc.data.page_content} />
+                </Container>
             </div>
         </DefaultLayout>
     )

@@ -1,13 +1,15 @@
 import React from 'react'
 
 import DefaultLayout from 'layouts'
-import { Header, HomeBanner, SliceZone } from 'components'
+import { Header, Banner, SliceZone } from 'components'
 import { Client } from 'utils/prismicHelpers'
 
-import { List } from '../components/List'
+import { List, Container } from 'components'
 import { getSortedEpisodesData } from '../lib/episodes'
 import { getSortedBlogData } from '../lib/blog'
 import { getAllPageIds, getPageData } from '../lib/pages'
+
+
 
 const Page = ({ listElementsData, doc, menu }) => {
     if (doc && doc.data) {
@@ -15,8 +17,10 @@ const Page = ({ listElementsData, doc, menu }) => {
             <DefaultLayout>
                 <div className={doc.uid}>
                     <Header menu={menu} />
-                    <HomeBanner banner={doc.data.page_banner[0]} />
-                    <List type={doc.uid} listElementsData={listElementsData} />
+                    <Banner banner={doc.data.page_banner[0]} />
+                    <Container>
+                        <List type={doc.uid} listElementsData={listElementsData} />
+                    </Container>
                 </div>
             </DefaultLayout>
         )
