@@ -2,11 +2,12 @@ import Head from 'next/head'
 import Image from 'next/image'
 import DefaultLayout from 'layouts'
 import React from 'react'
-import { getAllEpisodeIds, getEpisodeData } from '../../lib/episodes'
-import utilStyles from '../../styles/utils.module.css'
+import { getAllBlogIds, getBlogData } from '../../lib/blog'
+import { SliceZone } from '../../components/slices'
+//import utilStyles from '../../styles/utils.module.css'
 
 export async function getStaticProps({ params }) {
-    const episodeData = await getEpisodeData(params.id)
+    const episodeData = await getBlogData(params.id)
     return {
         props: {
             episodeData,
@@ -14,7 +15,7 @@ export async function getStaticProps({ params }) {
     }
 }
 export async function getStaticPaths() {
-    const paths = await getAllBlogPostIds()
+    const paths = await getAllBlogIds()
     return {
         paths,
         fallback: false,

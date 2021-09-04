@@ -1,25 +1,26 @@
 import React from 'react'
 
-import DefaultLayout from 'layouts'
-import { Header, Banner, SliceZone } from 'components'
-import { Client } from 'utils/prismicHelpers'
+import { Client } from '../utils/prismicHelpers'
+import { Header, Banner, SliceZone, List, Container } from '../components'
+import DefaultLayout from '../layouts'
 
-import { List, Container } from 'components'
 import { getSortedEpisodesData } from '../lib/episodes'
 import { getSortedBlogData } from '../lib/blog'
 import { getAllPageIds, getPageData } from '../lib/pages'
 
-
-
 const Page = ({ listElementsData, doc, menu }) => {
     if (doc && doc.data) {
+        console.log(doc.data)
         return (
             <DefaultLayout>
                 <div className={doc.uid}>
-                    <Header menu={menu} />
+                    <Header menu={menu} pageData={doc.data} />
                     <Banner banner={doc.data.page_banner[0]} />
                     <Container>
-                        <List type={doc.uid} listElementsData={listElementsData} />
+                        <List
+                            type={doc.uid}
+                            listElementsData={listElementsData}
+                        />
                     </Container>
                 </div>
             </DefaultLayout>

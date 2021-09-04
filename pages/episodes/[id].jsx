@@ -1,9 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import DefaultLayout from 'layouts'
 import React from 'react'
+import DefaultLayout from '../../layouts'
 import { getAllEpisodeIds, getEpisodeData } from '../../lib/episodes'
-import utilStyles from '../../styles/utils.module.css'
 
 export async function getStaticProps({ params }) {
     const episodeData = await getEpisodeData(params.id)
@@ -32,13 +31,13 @@ export default function Episode({ episodeData }) {
             <Image
                 priority
                 src={episodeData[0].data.episode_image.url}
-                className={utilStyles.borderCircle}
                 height={144}
                 width={144}
             />
             <br />
             {episodeData.date}
             <iframe
+                title="video"
                 width="560"
                 height="315"
                 src="https://www.youtube.com/embed/IO9XlQrEt2Y"

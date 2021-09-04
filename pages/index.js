@@ -4,12 +4,17 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Header, Banner, Container } from 'components'
-import DefaultLayout from 'layouts'
+import {
+    Header,
+    Banner,
+    Container,
+    EpisodeCard,
+    SliceZone,
+} from '../components'
+import DefaultLayout from '../layouts'
 import Date from '../utils/date'
-
 import Client from '../utils/prismicHelpers'
-import { SliceZone } from '../components'
+import { getLatestEpisodeData } from '../lib/episodes'
 
 export async function getStaticProps({ preview = null, previewData = {} }) {
     const { ref } = previewData
@@ -18,25 +23,32 @@ export async function getStaticProps({ preview = null, previewData = {} }) {
 
     const doc = (await client.getSingle('home', ref ? { ref } : null)) || {}
     const menu = (await client.getSingle('menu', ref ? { ref } : null)) || {}
+    const episodeData = (await getLatestEpisodeData()) || {}
+
     return {
         props: {
             doc,
             menu,
+            episodeData,
             preview,
         },
     }
 }
 
-export default function Home({ doc, menu }) {
+export default function Home({ doc, menu, episodeData }) {
     return (
-        <DefaultLayout home>
-            <div className="homepage">
-                <Header menu={menu} />
-                <Banner banner={doc.data.homepage_banner[0]} />
-                <Container>
-                    <SliceZone sliceZone={doc.data.page_content} />
-                </Container>
-            </div>
+        <DefaultLayout>
+            <Header menu={menu} pageData={doc.data} />
+            <Banner banner={doc.data.homepage_banner[0]} />
+            <EpisodeCard
+                id={episodeData.id}
+                date={episodeData.date}
+                title={episodeData.title}
+                imageURL={episodeData.imageURL}
+            />
+            <Container>
+                <SliceZone sliceZone={doc.data.page_content} />
+            </Container>
         </DefaultLayout>
     )
 }

@@ -5,17 +5,17 @@ export const globals = css.global`
   -webkit-font-smoothing: antialiased;
 }
 ::selection {
-  background: #FFF7C7; /* WebKit/Blink Browsers */
+  background: #afd69b; /* WebKit/Blink Browsers */
 }
 ::-moz-selection {
-  background: #FFF7C7; /* Gecko Browsers */
+  background: #b7cc9d; /* Gecko Browsers */
 }
 /*
 * Globals
 */
 body {
   padding: 20px;
-  color: #72767b;
+  color: #8fb6ab;
   font-family: 'Lato', sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -23,7 +23,7 @@ body {
   line-height: 28px;
 }
 a {
-  color: #72767B;
+  color: #a6dbbc;
   font-size: 16px;
   font-weight: 400;
   letter-spacing : 0.35;
@@ -40,14 +40,14 @@ h1 {
   font-family: ‘Lora’, Serif; 
   font-size: 42px; 
   font-weight: normal; 
-  color: #484D52; 
+  color: #8ca19e; 
   line-height: 52px; 
   letter-spacing : 1.14;
   margin-bottom: 1rem;
 }
 h2, h2 a {
   margin-bottom: 1rem;
-  color: #484d52;
+  color: #8ca19e;
   font-size: 32px;
   font-weight: 700;
   letter-spacing : 0.85;

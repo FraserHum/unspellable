@@ -40,11 +40,24 @@ export async function predicateQuery(type, predicate, order) {
 
 export const fetchIDByType = async (type) => {
     const response = await Client().query(
-        Prismic.Predicates.at(type, predicate),
+        Prismic.Predicates.at(type),
         order
     )
     if (response) {
         return response
     }
     return null
+}
+
+export const getFirstOrLastbyType = async (type, getFirst = false, tags = []) => {
+    const order = getFirst ? '' : 'desc';
+    const response = Client().query([
+        Prismic.Predicates.at('document.type', type),
+        Prismic.Predicates.at('document.tags', tags)],
+        {pageSize: 1,
+            page: 1,
+            orderings : `[document.first_publication_date ${order}]`}
+    )
+
+    return response;
 }
