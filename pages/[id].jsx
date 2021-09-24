@@ -1,12 +1,15 @@
 import React from 'react'
-
+import styled from 'styled-components'
 import { Client } from '../utils/prismicHelpers'
 import { Header, Banner, SliceZone, List, Container } from '../components'
 import DefaultLayout from '../layouts'
-
 import { getSortedEpisodesData } from '../lib/episodes'
 import { getSortedBlogData } from '../lib/blog'
 import { getAllPageIds, getPageData } from '../lib/pages'
+
+const StyledDiv = styled.div`
+    display: grid;
+`
 
 const Page = ({ listElementsData, doc, menu }) => {
     if (doc && doc.data) {
@@ -14,8 +17,10 @@ const Page = ({ listElementsData, doc, menu }) => {
         return (
             <DefaultLayout>
                 <div className={doc.uid}>
-                    <Header menu={menu} pageData={doc.data} />
-                    <Banner banner={doc.data.page_banner[0]} />
+                    <StyledDiv>
+                        <Banner banner={doc.data.page_banner[0]} />
+                        <Header menu={menu} pageData={doc.data} />
+                    </StyledDiv>
                     <Container>
                         <List
                             type={doc.uid}

@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Date } from 'utils'
+import { Date } from '../utils'
 import styled from 'styled-components'
 
 const EpisodeCardcontainer = styled.div`
@@ -13,7 +13,6 @@ const EpisodeCardcontainer = styled.div`
     display: flex;
     grid-template-columns: 1fr 3fr;
     background-color: #8ca19e;
-    position: 'absolute';
 `
 
 const StyledA = styled.a`
@@ -32,8 +31,8 @@ const StyledImage = styled.img`
     margin: 0 auto;
 `
 
-export const EpisodeCard = ({ id, date, title, imageURL }) => (
-    <EpisodeCardcontainer>
+export const EpisodeCard = ({ id, date, title, imageURL, className }) => (
+    <EpisodeCardcontainer className={className}>
         <StyledImageContainer>
             <StyledImage src={imageURL} />
         </StyledImageContainer>

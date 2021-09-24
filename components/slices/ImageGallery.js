@@ -1,9 +1,9 @@
 import React from 'react'
 import { RichText } from 'prismic-reactjs'
 
-import { DocLink } from 'components'
-import { linkResolver } from 'prismic-configuration'
-import { imageGalleryStyles } from 'styles'
+import DocLink from '../DocLink'
+import { linkResolver } from '../../prismic-configuration'
+import { imageGalleryStyles } from '../../styles'
 
 const ImageGallery = ({ slice }) => (
     <section className="image-gallery content-section">

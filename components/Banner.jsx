@@ -1,13 +1,16 @@
 import React from 'react'
 import { RichText } from 'prismic-reactjs'
-
-import { DocLink } from 'components'
-import { BannerStyles } from 'styles'
 import styled from 'styled-components'
+import DocLink from './DocLink'
+import { BannerStyles } from '../styles'
 
 const StyledSection = styled.section`
-    margin: -70px 0 0px;
-    padding: 2em 0;
+    grid-area: 1 / 1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    margin: 0 auto;
     background-position: center top;
     background-size: auto;
     background-repeat: no-repeat;
@@ -15,17 +18,19 @@ const StyledSection = styled.section`
     line-height: 1.75;
     text-align: center;
     width: 100%;
-    height: 583px;
-    ${({ imageURL }) => `
-      background: linear-gradient(#F2F2F2, 20%,  transparent), url(${imageURL});
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center top;
-    `};
+    height: auto;
 `
+// ${({ imageURL }) => `
+//   background: linear-gradient(#F2F2F2, 20%,  transparent), url(${imageURL});
+//   background-size: cover;
+//   background-repeat: no-repeat;
+//   background-position: center top;
+// `};
 
 const Banner = ({ banner }) => (
-    <StyledSection imageURL={banner.image.url}></StyledSection>
+    <StyledSection imageURL={banner.image.url}>
+        <img src={banner.image.url} alt={banner.image.alt} />
+    </StyledSection>
 )
 
 export default Banner

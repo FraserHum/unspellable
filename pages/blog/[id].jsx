@@ -1,10 +1,9 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import DefaultLayout from 'layouts'
+import DefaultLayout from '../../layouts'
 import React from 'react'
 import { getAllBlogIds, getBlogData } from '../../lib/blog'
 import { SliceZone } from '../../components/slices'
-//import utilStyles from '../../styles/utils.module.css'
 
 export async function getStaticProps({ params }) {
     const episodeData = await getBlogData(params.id)
