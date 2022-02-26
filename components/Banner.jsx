@@ -5,7 +5,6 @@ import DocLink from './DocLink'
 import { BannerStyles } from '../styles'
 
 const StyledSection = styled.section`
-    grid-area: 1 / 1;
     width: 100%;
     height: 100%;
     top: 0;
@@ -15,7 +14,6 @@ const StyledSection = styled.section`
     background-size: auto;
     background-repeat: no-repeat;
     color: #f2f2f2;
-    line-height: 1.75;
     text-align: center;
     width: 100%;
     height: auto;

@@ -10,9 +10,10 @@ const EpisodeCardcontainer = styled.div`
     padding: 0.25em 1em;
     border: 2px solid #643a71;
     border-radius: 3px;
-    display: flex;
     grid-template-columns: 1fr 3fr;
+    display: flex;
     background-color: #8ca19e;
+    min-width: 250px;
 `
 
 const StyledA = styled.a`
@@ -20,15 +21,21 @@ const StyledA = styled.a`
 `
 
 const StyledImageContainer = styled.div`
-    height: 150px;
-    width: 150px;
+    max-height: 150px;
+    max-width: 150px;
     overflow: hidden;
     align: middle;
     border-radius: 50%;
 `
 
 const StyledImage = styled.img`
-    margin: 0 auto;
+    height: max(18vh, 12rem);
+    object-fit: cover;
+    width: 100%;
+    @supports (aspect-ratio: 1) {
+        aspect-ratio: var(--img-ratio);
+        height: auto;
+    }
 `
 
 export const EpisodeCard = ({ id, date, title, imageURL, className }) => (

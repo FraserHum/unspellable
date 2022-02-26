@@ -4,6 +4,7 @@ import { default as NextLink } from 'next/link'
 import { RichText } from 'prismic-reactjs'
 import styled from 'styled-components'
 import DocLink from './DocLink'
+import useWindowSize from '../utils/useWindowSize'
 
 const StyledHeader = styled.header`
     --min: 10ch;
@@ -12,12 +13,11 @@ const StyledHeader = styled.header`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: var(--gap);
-    grid-area: 1 / 1;
-    max-height: 70px;
+
+    max-height: 125px;
 
     > * {
-        flex: 1 1 var(--min);
+        flex: 1 1;
     }
 `
 
@@ -29,25 +29,25 @@ const Image = styled.img`
     width: 7vw;
     min-width: 70px;
 `
-const StyledHeading2 = styled.h2`
+const StyledHeading1 = styled.h1`
     color: #f2f2f2;
     font-family: 'Vidaloka', serif;
     font-size: 4vw;
     font-weight: 900;
-    line-height: 70px;
     margin: 0 auto;
 `
 
-const StyledP = styled.p`
+const StyledHeading2 = styled.h2`
     color: #231f20;
     font-family: 'Vidaloka', serif;
-    font-size: 25px;
-    font-weight: 200;
-    line-height: 25px;
+    font-size: 2vw;
+    font-weight: 400;
+    margin: 0 auto;
 `
 
 const StyledDiv = styled.div`
     flex: 1 1 auto;
+    max-height: 120px;
 `
 
 const StyledA = styled.a`
@@ -78,8 +78,8 @@ const Header = ({ menu, pageData }) => (
             </StyledA>
         </StyledLink>
         <StyledDiv>
-            <StyledHeading2>{RichText.asText(pageData.title)}</StyledHeading2>
-            <StyledP>{RichText.asText(pageData.tagline)}</StyledP>
+            <StyledHeading1>{RichText.asText(pageData.title)}</StyledHeading1>
+            <StyledHeading2>{RichText.asText(pageData.tagline)}</StyledHeading2>
         </StyledDiv>
         <MenuLinks menu={menu} />
     </StyledHeader>

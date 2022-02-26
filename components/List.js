@@ -6,8 +6,8 @@ import { BlogPostCard } from './BlogPostCard'
 import styled from 'styled-components'
 
 const StyledList = styled.ul`
-list-style: none;
-width: 50vw;
+    list-style: none;
+    padding: 0;
 `
 
 export const List = ({ type, listElementsData }) => {
@@ -26,15 +26,20 @@ export const List = ({ type, listElementsData }) => {
     } else if (type === 'blog') {
         cards = listElementsData.map(({ id, date, title, subject }) => (
             <li key={id}>
-                <BlogPostCard id={id} date={date} title={title} subject={subject} />
+                <BlogPostCard
+                    id={id}
+                    date={date}
+                    title={title}
+                    subject={subject}
+                />
             </li>
         ))
     }
 
     return (
-        <section >
-            <h2 >{type}</h2>
-            <StyledList >{cards}</StyledList>
+        <section>
+            <h2>{type}</h2>
+            <StyledList>{cards}</StyledList>
         </section>
     )
 }

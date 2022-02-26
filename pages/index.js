@@ -17,18 +17,50 @@ import Date from '../utils/date'
 import Client from '../utils/prismicHelpers'
 import { getLatestEpisodeData } from '../lib/episodes'
 
-const StyledDiv = styled.div`
+const HomeTopDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    aspect-ratio: 16/9;
+`
+const BannerEpisodeDiv = styled.div`
     display: grid;
     grid-template-areas: 'stack';
-    aspect-ratio: 16/9;
+    background-color: #200070;
+    min-height: 40vh;
+    > * {
+        grid-area: stack;
+    }
 `
 
 const StyledEpisodeCard = styled(EpisodeCard)`
-    grid-area: stack;
-    align-self: end;
-    justify-self: center;
-    place-content: center;
-    margin: 7vw;
+    place-self: center;
+    text-align: center;
+    line-height: 1;
+    font-style: italic;
+    padding: 5vh 2vw;
+
+    position: relative;
+    align-self: center;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    place-content: left;
+    margin: 2vw;
+    min-width: 50vw;
+    max-width: 80vw;
+    max-height: 40vw;
+`
+
+const StyledImg = styled.img`
+    --background-img-brightness: 1;
+    --background-img-saturate: 1;
+
+    object-fit: cover;
+    height: 100%;
+    min-height: 33vh
+    /* decrease brightness to improve text contrast */
+    filter: brightness(var(--background-img-brightness))
+        saturate(var(--background-img-saturate));
 `
 
 export async function getStaticProps({ preview = null, previewData = {} }) {
@@ -53,17 +85,23 @@ export async function getStaticProps({ preview = null, previewData = {} }) {
 export default function Home({ doc, menu, episodeData }) {
     return (
         <DefaultLayout>
-            <StyledDiv>
-                <Banner banner={doc.data.homepage_banner[0]} />
-                <Header menu={menu} pageData={doc.data} />
-                <StyledEpisodeCard
-                    id={episodeData.id}
-                    date={episodeData.date}
-                    title={episodeData.title}
-                    imageURL={episodeData.imageURL}
-                />
-            </StyledDiv>
-
+            <Header menu={menu} pageData={doc.data} />
+            <HomeTopDiv>
+                <BannerEpisodeDiv>
+                    <picture>
+                        <StyledImg
+                            src={doc.data.homepage_banner[0].image.url}
+                            alt={doc.data.homepage_banner[0].image.alt}
+                        />
+                    </picture>
+                    <StyledEpisodeCard
+                        id={episodeData.id}
+                        date={episodeData.date}
+                        title={episodeData.title}
+                        imageURL={episodeData.imageURL}
+                    />
+                </BannerEpisodeDiv>
+            </HomeTopDiv>
             <Container>
                 <SliceZone sliceZone={doc.data.page_content} />
             </Container>

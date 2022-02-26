@@ -9,6 +9,7 @@ import { getAllPageIds, getPageData } from '../lib/pages'
 
 const StyledDiv = styled.div`
     display: grid;
+    max-height: 15vh;
 `
 
 const Page = ({ listElementsData, doc, menu }) => {
@@ -17,9 +18,9 @@ const Page = ({ listElementsData, doc, menu }) => {
         return (
             <DefaultLayout>
                 <div className={doc.uid}>
+                    <Header menu={menu} pageData={doc.data} />
                     <StyledDiv>
                         <Banner banner={doc.data.page_banner[0]} />
-                        <Header menu={menu} pageData={doc.data} />
                     </StyledDiv>
                     <Container>
                         <List
