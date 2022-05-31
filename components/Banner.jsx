@@ -6,7 +6,6 @@ import { BannerStyles } from 'styles'
 import styled from 'styled-components'
 
 const StyledSection = styled.section`
-    margin: -70px 0 0px;
     padding: 2em 0;
     background-position: center top;
     background-size: auto;

@@ -22,7 +22,7 @@ export const BannerStyles = css.global`
   }
   .banner-title {
     color: #ffffff;
-    font-size: 70px;
+    font-size: 60px;
     font-weight: 900;
     line-height: 70px;
   }
