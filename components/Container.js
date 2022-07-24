@@ -1,11 +1,12 @@
 import styled from 'styled-components'
 const StyledDiv = styled.div`
-    maxwidth: 1280;
+    max-width: 1280px;
     padding: 0 25vw;
     margin: 0 auto;
     width: 100%;
     background-color: #a6dbbc;
-    display: flex;
+    display: grid;
+    place-content: center;
 `
 
 export const Container = (props) => <StyledDiv>{props.children}</StyledDiv>

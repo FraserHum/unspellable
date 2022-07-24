@@ -6,7 +6,7 @@ import { DocLink } from 'components'
 import styled from 'styled-components'
 
 const StyledHeader = styled.header`
-    background-color: #B7CB9C;
+    background-color: #DBE5CE;
 `
 
 const StyledLink = styled(NextLink)`
@@ -47,13 +47,14 @@ const StyledA = styled.a`
     flex-basis: fit-content;
 `
 
-const StyledList = styled.ul`
+const StyledList = styled.ul`{"type":"add","fieldType":"Color"}
     display: flex;
     flex-direction: row;
     flex: 1 1 auto;
-    justify-content: space-evenly;
+    justify-content: 'space-evenly';
     list-style-type: none;
-    margin: 0 auto;
+   margin: 0 auto;
+   padding: 0;
 `
 
 const StyledNav = styled.nav`
@@ -72,10 +73,8 @@ const StyledMenuListItem = styled.li`
     text-align:center;
 `
 
-const Header = ({ menu, pageData }) => {
-    console.log(pageData)
-    return (
-        <StyledHeader className="site-header">
+const Header = ({ menu, pageData, theme }) => {
+       return <StyledHeader className="site-header">
             <Titlebar>
             <StyledLink href="/">
                 <StyledA>
@@ -102,22 +101,24 @@ const Header = ({ menu, pageData }) => {
                 </StyledA>
             </StyledLink>
             </Titlebar>
-            <MenuLinks menu={menu} />
+            <MenuLinks menu={menu} theme={theme} />
         </StyledHeader>
-    )
 }
 
-const MenuLinks = ({ menu }) => {
+
+const MenuLinks = ({ menu, theme }) => {
     if (menu) {
         return (
             <StyledNav>
                 <StyledList>
-                    {menu.data.menu_links.map((menuLink) => (
+                    {menu.data.menu_links.map((menuLink) => {
+                     return (
                         <MenuLink
                             menuLink={menuLink}
                             key={`menulink-${menuLink.link.id}`}
+                            theme={theme}
                         />
-                    ))}
+                    ) })}
                 </StyledList>
             </StyledNav>
         )
@@ -125,7 +126,13 @@ const MenuLinks = ({ menu }) => {
     return null
 }
 
-const MenuLink = ({ menuLink }) => {
+const MenuLink = ({ menuLink, theme }) => {
+    const slice = theme.data.body.find((slice) => {
+        console.log(menuLink.label)
+        return slice.primary.name === menuLink.label.text
+    })
+    const backgroundColor = slice["backgound-color"];
+    const textColor = slice["text-color"];
     return (
     <StyledMenuListItem backgroundColor={menuLink.backgroundcolor} textColor={menuLink.textcolor}>
         <DocLink link={menuLink.link}>

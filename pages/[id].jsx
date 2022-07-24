@@ -9,13 +9,11 @@ import { getSortedBlogData } from '../lib/blog'
 import { getAllPageIds, getPageData } from '../lib/pages'
 
 const Page = ({ listElementsData, doc, menu }) => {
-    if (doc && doc.data) {
-        console.log(doc.data)
+    if (doc && doc.data) {  
         return (
             <DefaultLayout>
                 <div className={doc.uid}>
                     <Header menu={menu} pageData={doc.data} />
-                    <Banner banner={doc.data.page_banner[0]} />
                     <Container>
                         <List
                             type={doc.uid}
@@ -26,7 +24,7 @@ const Page = ({ listElementsData, doc, menu }) => {
             </DefaultLayout>
         )
     }
-
+    
     // Call the standard error page if the document was not found
     return null
 }

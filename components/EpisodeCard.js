@@ -3,41 +3,26 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Date } from 'utils'
 import styled from 'styled-components'
+import { CollapseableSection } from './CollapseableSection.tsx'
 
 const EpisodeCardcontainer = styled.div`
-    font-size: 1em;
-    margin: 1em;
-    padding: 0.25em 1em;
-    border: 2px solid #643a71;
-    border-radius: 3px;
-    display: flex;
-    grid-template-columns: 1fr 3fr;
-    background-color: #8ca19e;
-    position: 'absolute';
+display: grid;
+place-content: center;
+width: 40vw;
 `
 
 const StyledA = styled.a`
     color: #afd69b;
 `
 
-const StyledImageContainer = styled.div`
-    height: 150px;
-    width: 150px;
-    overflow: hidden;
-    align: middle;
-    border-radius: 50%;
+
+const StyledEpisodeTitleDiv = styled.div`
+    background-color: #90B6AB;
 `
 
-const StyledImage = styled.img`
-    margin: 0 auto;
-`
-
-export const EpisodeCard = ({ id, date, title, imageURL }) => (
+export const EpisodeCard = ({ id, date, title}) => (
     <EpisodeCardcontainer>
-        <StyledImageContainer>
-            <StyledImage src={imageURL} />
-        </StyledImageContainer>
-        <div>
+        <StyledEpisodeTitleDiv>
             <Link href={`/episodes/${id}`}>
                 <StyledA>{title}</StyledA>
             </Link>
@@ -45,6 +30,15 @@ export const EpisodeCard = ({ id, date, title, imageURL }) => (
             <small>
                 <Date dateString={date} />
             </small>
-        </div>
+        </StyledEpisodeTitleDiv> 
+        <CollapseableSection isOpen={false} >
+            <div>
+                Episode Description:
+            </div>
+            <div>TRIGGER WARNINGS</div>
+            <CollapseableSection isOpen={false}>
+            
+            </CollapseableSection>
+        </CollapseableSection>
     </EpisodeCardcontainer>
 )

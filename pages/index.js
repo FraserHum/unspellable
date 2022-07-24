@@ -23,6 +23,7 @@ export async function getStaticProps({ preview = null, previewData = {} }) {
 
     const doc = (await client.getSingle('home', ref ? { ref } : null)) || {}
     const menu = (await client.getSingle('menu', ref ? { ref } : null)) || {}
+    const theme = (await client.getSingle('theme', ref ? { ref }: null)) || {}
     const episodeData = (await getLatestEpisodeData()) || {}
 
     return {
@@ -31,15 +32,18 @@ export async function getStaticProps({ preview = null, previewData = {} }) {
             menu,
             episodeData,
             preview,
+            theme,
         },
     }
 }
 
-export default function Home({ doc, menu, episodeData }) {
+export default function Home({ doc, menu, episodeData, theme }) {
+    
+
+
     return (
         <DefaultLayout>
-            <Header menu={menu} pageData={doc.data} />
-            <Banner banner={doc.data.homepage_banner[0]} />
+            <Header menu={menu} pageData={doc.data} theme={theme}/>
             <EpisodeCard
                 id={episodeData.id}
                 date={episodeData.date}
