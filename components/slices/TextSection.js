@@ -17,9 +17,6 @@ const TextSection = ({ slice }) => {
                 linkResolver={linkResolver}
                 serializeHyperlink={customLink}
             />
-            <style jsx global>
-                {textSectionStyles}
-            </style>
         </section>
     )
 }

@@ -16,9 +16,6 @@ const ImageGallery = ({ slice }) => (
                 <GalleryItem item={item} key={index} />
             ))}
         </div>
-        <style jsx global>
-            {imageGalleryStyles}
-        </style>
     </section>
 )
 

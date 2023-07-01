@@ -1,29 +1,23 @@
-/* eslint-disable react/jsx-no-undef */
-/* eslint-disable react/jsx-filename-extension */
-/* eslint-disable react/react-in-jsx-scope */
-import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
+
 import {
     Header,
-    Banner,
     Container,
     EpisodeCard,
     SliceZone,
 } from '../components'
 import DefaultLayout from '../layouts'
-import Date from '../utils/date'
 import Client from '../utils/prismicHelpers'
 import { getLatestEpisodeData } from '../lib/episodes'
+import React from 'react'
 
-export async function getStaticProps({ preview = null, previewData = {} }) {
+export async function getStaticProps({ preview = null, previewData = {ref : undefined} }) {
     const { ref } = previewData
 
     const client = Client()
 
-    const doc = (await client.getSingle('home', ref ? { ref } : null)) || {}
-    const menu = (await client.getSingle('menu', ref ? { ref } : null)) || {}
-    const theme = (await client.getSingle('theme', ref ? { ref }: null)) || {}
+    const doc = (await client.getSingle('home')) || {}
+    const menu = (await client.getSingle('menu')) || {}
+    const theme = (await client.getSingle('theme')) || {}
     const episodeData = (await getLatestEpisodeData()) || {}
 
     return {

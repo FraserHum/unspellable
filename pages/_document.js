@@ -27,12 +27,6 @@ class MyDocument extends Document {
                         rel="stylesheet"
                     />
                 </Head>
-                <style jsx global>
-                    {reset}
-                </style>
-                <style jsx global>
-                    {globals}
-                </style>
                 <body>
                     <Main />
                     <NextScript />

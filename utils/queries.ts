@@ -1,8 +1,8 @@
 import Prismic from '@prismicio/client'
-import { Client } from './prismicHelpers'
+import client from './prismicHelpers'
 
 async function fetchDocs(page = 1, routes = []) {
-    const response = await Client().query('', {
+    const response = await client.get({
         pageSize: 100,
         lang: '*',
         page,
@@ -28,10 +28,7 @@ export const homePageQuery = async () => {
 }
 
 export async function predicateQuery(type, predicate, order) {
-    const response = await Client().query(
-        Prismic.Predicates.at(type, predicate),
-        order
-    )
+    const response = await client.get(Prismic.filter.at(type, predicate), order)
     if (response) {
         return response
     }
@@ -39,25 +36,30 @@ export async function predicateQuery(type, predicate, order) {
 }
 
 export const fetchIDByType = async (type) => {
-    const response = await Client().query(
-        Prismic.Predicates.at(type),
-        order
-    )
+    const response = await client.get(Prismic.filter.at(type), order)
     if (response) {
         return response
     }
     return null
 }
 
-export const getFirstOrLastbyType = async (type, getFirst = false, tags = []) => {
-    const order = getFirst ? '' : 'desc';
-    const response = Client().query([
-        Prismic.Predicates.at('document.type', type),
-        Prismic.Predicates.at('document.tags', tags)],
-        {pageSize: 1,
+export const getFirstOrLastbyType = async (
+    type,
+    getFirst = false,
+    tags = []
+) => {
+    const order = getFirst ? '' : 'desc'
+    const response = client.get(
+        [
+            Prismic.Predicates.at('document.type', type),
+            Prismic.Predicates.at('document.tags', tags),
+        ],
+        {
+            pageSize: 1,
             page: 1,
-            orderings : `[document.first_publication_date ${order}]`}
+            orderings: `[document.first_publication_date ${order}]`,
+        }
     )
 
-    return response;
+    return response
 }

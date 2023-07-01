@@ -28,9 +28,6 @@ const ImageHighlight = ({ slice }) => (
                 alt={slice.primary.featured_image.alt}
             />
         </div>
-        <style jsx global>
-            {imageHighlightStyles}
-        </style>
     </section>
 )
 

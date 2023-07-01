@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Date } from 'utils'
 import styled from 'styled-components'
-import { CollapseableSection } from './CollapseableSection.tsx'
+import { CollapseableSection } from './CollapseableSection.jsx'
 
 const EpisodeCardcontainer = styled.div`
     display: grid;
@@ -20,7 +20,7 @@ const StyledEpisodeTitleDiv = styled.div`
     background-color: #90b6ab;
 `
 
-export const EpisodeCard = ({ id, date, title }) => (
+export const EpisodeCard = ({ id, date, title, imageURL }) => (
     <EpisodeCardcontainer>
         <StyledEpisodeTitleDiv>
             <Link href={`/episodes/${id}`}>

@@ -6,9 +6,6 @@ const Footer = () => (
         <p>
             <br />
         </p>
-        <style jsx global>
-            {footerStyles}
-        </style>
     </footer>
 )
 
