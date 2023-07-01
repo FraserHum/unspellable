@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
-import { default as NextLink } from 'next/link'
+import  NextLink from 'next/link'
 import { RichText } from 'prismic-reactjs'
-import { DocLink } from 'components'
 import styled from 'styled-components'
+import DocLink from './DocLink'
 
 const StyledHeader = styled.header`
     background-color: #DBE5CE;
@@ -45,6 +45,7 @@ const StyledDiv = styled.div`
 const StyledA = styled.a`
     width:100%;
     flex-basis: fit-content;
+    cursor: pointer;
 `
 
 const StyledList = styled.ul`{"type":"add","fieldType":"Color"}
@@ -73,8 +74,8 @@ const StyledMenuListItem = styled.li`
     text-align:center;
 `
 
-const Header = ({ menu, pageData, theme }) => {
-       return <StyledHeader className="site-header">
+const Header = ({ menu, pageData, theme }) =>
+        <StyledHeader className="site-header">
             <Titlebar>
             <StyledLink href="/">
                 <StyledA>
@@ -103,7 +104,6 @@ const Header = ({ menu, pageData, theme }) => {
             </Titlebar>
             <MenuLinks menu={menu} theme={theme} />
         </StyledHeader>
-}
 
 
 const MenuLinks = ({ menu, theme }) => {
@@ -111,14 +111,13 @@ const MenuLinks = ({ menu, theme }) => {
         return (
             <StyledNav>
                 <StyledList>
-                    {menu.data.menu_links.map((menuLink) => {
-                     return (
+                    {menu.data.menu_links.map((menuLink) =>
                         <MenuLink
                             menuLink={menuLink}
                             key={`menulink-${menuLink.link.id}`}
                             theme={theme}
                         />
-                    ) })}
+                    )}
                 </StyledList>
             </StyledNav>
         )
@@ -126,21 +125,13 @@ const MenuLinks = ({ menu, theme }) => {
     return null
 }
 
-const MenuLink = ({ menuLink, theme }) => {
-    const slice = theme.data.body.find((slice) => {
-        console.log(menuLink.label)
-        return slice.primary.name === menuLink.label.text
-    })
-    const backgroundColor = slice["backgound-color"];
-    const textColor = slice["text-color"];
-    return (
+const MenuLink = ({ menuLink }) => (
     <StyledMenuListItem backgroundColor={menuLink.backgroundcolor} textColor={menuLink.textcolor}>
         <DocLink link={menuLink.link}>
             {RichText.asText(menuLink.label)}
         </DocLink>
     </StyledMenuListItem>
     )
-}
 
 
 

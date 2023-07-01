@@ -5,7 +5,7 @@ import {
   FullWidthImage,
   ImageGallery,
   ImageHighlight,
-} from "./";
+} from ".";
 
 const SliceZone = ({ sliceZone }) => (
   <div className="container">

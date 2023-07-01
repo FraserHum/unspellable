@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable import/prefer-default-export */
 import React from 'react'
+import styled from 'styled-components'
 import { EpisodeCard } from './EpisodeCard'
 import { BlogPostCard } from './BlogPostCard'
-import styled from 'styled-components'
 
 const StyledList = styled.ul`
 list-style: none;

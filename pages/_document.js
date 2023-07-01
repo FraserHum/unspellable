@@ -1,6 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
-import PrismicScript from '../components/PrismicScript'
 import { reset, globals } from 'styles'
+import PrismicScript from '../components/PrismicScript'
 
 class MyDocument extends Document {
     static async getInitialProps(ctx) {

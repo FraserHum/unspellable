@@ -6,21 +6,21 @@ import styled from 'styled-components'
 import { CollapseableSection } from './CollapseableSection.tsx'
 
 const EpisodeCardcontainer = styled.div`
-display: grid;
-place-content: center;
-width: 40vw;
+    display: grid;
+    place-content: center;
+    width: 40vw;
 `
 
 const StyledA = styled.a`
     color: #afd69b;
+    cursor: pointer;
 `
-
 
 const StyledEpisodeTitleDiv = styled.div`
-    background-color: #90B6AB;
+    background-color: #90b6ab;
 `
 
-export const EpisodeCard = ({ id, date, title}) => (
+export const EpisodeCard = ({ id, date, title }) => (
     <EpisodeCardcontainer>
         <StyledEpisodeTitleDiv>
             <Link href={`/episodes/${id}`}>
@@ -30,15 +30,11 @@ export const EpisodeCard = ({ id, date, title}) => (
             <small>
                 <Date dateString={date} />
             </small>
-        </StyledEpisodeTitleDiv> 
-        <CollapseableSection isOpen={false} >
-            <div>
-                Episode Description:
-            </div>
+        </StyledEpisodeTitleDiv>
+        <CollapseableSection isOpen={false}>
+            <div>Episode Description:</div>
             <div>TRIGGER WARNINGS</div>
-            <CollapseableSection isOpen={false}>
-            
-            </CollapseableSection>
+            <CollapseableSection isOpen={false} />
         </CollapseableSection>
     </EpisodeCardcontainer>
 )

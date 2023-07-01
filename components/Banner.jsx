@@ -1,8 +1,4 @@
 import React from 'react'
-import { RichText } from 'prismic-reactjs'
-
-import { DocLink } from 'components'
-import { BannerStyles } from 'styles'
 import styled from 'styled-components'
 
 const StyledSection = styled.section`
