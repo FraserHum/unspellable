@@ -1,6 +1,6 @@
 import React from 'react'
 import { RichText } from 'prismic-reactjs'
-
+import Image from 'next/image'
 import { DocLink } from 'components'
 import { linkResolver } from 'prismic-configuration'
 import { imageGalleryStyles } from 'styles'
@@ -24,7 +24,7 @@ const ImageGallery = ({ slice }) => (
 
 const GalleryItem = ({ item }) => (
     <div className="gallery-item">
-        <img src={item.image.url} alt={item.image.alt} />
+        <Image src={item.image.url} alt={item.image.alt} />
         <RichText render={item.image_description} linkResolver={linkResolver} />
         <p className="gallery-link">
             <DocLink link={item.link}>

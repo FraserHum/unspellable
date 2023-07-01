@@ -33,6 +33,7 @@ export default function Episode({ episodeData }) {
                 src={episodeData[0].data.episode_image.url}
                 height={144}
                 width={144}
+                alt={episodeData[0].data.episode_title[0].text}
             />
             <br />
             {episodeData.date}

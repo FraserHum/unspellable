@@ -4,12 +4,8 @@ const StyledDiv = styled.div`
 overflow: hidden;
 `
 
-export const CollapseableSection = ({children, isOpen}) => {
-
-
-    return (
+export const CollapseableSection = ({children, isOpen}) => (
     <StyledDiv style={isOpen ? {height : "auto" }:{height : "0px" }} >
         {children}
     </StyledDiv>
     )
-}
