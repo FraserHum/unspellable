@@ -1,6 +1,6 @@
-import { apiEndpoint } from "../prismic-configuration";
+import { apiEndpoint } from '../prismic-configuration';
 
-const PrismicScript = () => {
+function PrismicScript() {
   const [, repoName] = apiEndpoint.match(/https?:\/\/([^.]+)?\.(cdn\.)?.+/);
   return (
     <script
@@ -9,6 +9,6 @@ const PrismicScript = () => {
       src={`https://static.cdn.prismic.io/prismic.js?new=true&repo=${repoName}`}
     />
   );
-};
+}
 
 export default PrismicScript;

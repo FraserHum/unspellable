@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const StyledDiv = styled.div`
     max-width: 1280px;
@@ -8,6 +8,8 @@ const StyledDiv = styled.div`
     background-color: #a6dbbc;
     display: grid;
     place-content: center;
-`
+`;
 
-export const Container = (props) => <StyledDiv>{props.children}</StyledDiv>
+export function Container(props) {
+  return <StyledDiv>{props.children}</StyledDiv>;
+}
