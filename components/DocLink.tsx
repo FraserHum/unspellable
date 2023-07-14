@@ -4,11 +4,10 @@ import React from 'react';
 import { default as NextLink } from 'next/link';
 import { Link } from 'prismic-reactjs';
 
-import styled from 'styled-components';
 import { linkResolver, hrefResolver } from '../prismic-configuration';
 
 // Main DocLink component function for generating links to other pages on this site
-function DocLink({ children, link, linkClass }) {
+function DocLink({ children, link }) {
   if (link) {
     const linkUrl = Link.url(link, linkResolver);
 
@@ -22,11 +21,7 @@ function DocLink({ children, link, linkClass }) {
     }
 
     // Otherwise return a normal anchor element
-    return (
-      <a className={linkClass} href={linkUrl}>
-        {children}
-      </a>
-    );
+    return <a href={linkUrl}>{children}</a>;
   }
   return null;
 }

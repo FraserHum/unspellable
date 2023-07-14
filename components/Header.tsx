@@ -69,7 +69,8 @@ const Titlebar = styled.div`
 
 const StyledMenuListItem = styled.li`
   color: ${(props) => (props.textColor ? props.textColor : 'white')};
-  background: ${(props) => (props.backgroundColor ? props.backgroundColor : 'grey')};
+  background: ${(props) =>
+    props.backgroundColor ? props.backgroundColor : 'grey'};
   flex: 1 1 auto;
   text-align: center;
 `;
