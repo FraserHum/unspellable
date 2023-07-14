@@ -1,7 +1,7 @@
 interface Apperance {
-  backgroundColor: string,
-  textColor: string,
-  fontFace: string,
+  backgroundColor: string;
+  textColor: string;
+  fontFace: string;
 }
 
 const getApperancePropsFromKey = (key: string): Apperance => {

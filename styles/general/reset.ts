@@ -118,7 +118,7 @@ export const reset = css.global`
   blockquote:after,
   q:before,
   q:after {
-    content: "";
+    content: '';
     content: none;
   }
   table {

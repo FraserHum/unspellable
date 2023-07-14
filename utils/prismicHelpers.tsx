@@ -1,5 +1,4 @@
 import * as prismic from '@prismicio/client';
-import * as prismicNext from '@prismicio/next';
 import Link from 'next/link';
 import React from 'react';
 import {
@@ -31,6 +30,10 @@ const createClientOptions = (req = null, prismicAccessToken = null) => {
   };
 };
 // Client method to query documents from the Prismic repo
-const client = (req = null) => prismic.createClient(apiEndpoint, createClientOptions(req, accessToken || null));
+const client = (req = null) =>
+  prismic.createClient(
+    apiEndpoint,
+    createClientOptions(req, accessToken || null)
+  );
 
 export default client();

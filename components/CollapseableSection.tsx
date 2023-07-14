@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const StyledDiv = styled.div`
-overflow: hidden;
+  overflow: hidden;
 `;
 
 export function CollapseableSection({ children, isOpen }) {

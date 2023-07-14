@@ -1,20 +1,20 @@
 {
-    "parser": "@typescript-eslint/parser",
-    "plugins": ["@typescript-eslint"],
-    "root": true,
-    "extends": ["next/core-web-vitals", "airbnb", "airbnb-typescript"],
-    "ignorePatterns": [
-        ".eslintrc.js",
-        ".next/*",
-        "node_modules/",
-        "next.config.js"
-    ],
-    "overrides": [
-        {
-            "files": ["*.ts", "*.tsx"],
-            "parserOptions": {
-                "project": "./tsconfig.json"
-            }
-        }
-    ]
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "root": true,
+  "extends": ["next/core-web-vitals", "airbnb", "airbnb-typescript"],
+  "ignorePatterns": [
+    ".eslintrc.js",
+    ".next/*",
+    "node_modules/",
+    "next.config.js"
+  ],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "parserOptions": {
+        "project": "./tsconfig.json"
+      }
+    }
+  ]
 }

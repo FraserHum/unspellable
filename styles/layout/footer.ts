@@ -5,7 +5,7 @@ export const footerStyles = css.global`
     max-width: 700px;
     margin: 0 auto;
     color: #9a9a9a;
-    font-family: "Lato", sans-serif;
+    font-family: 'Lato', sans-serif;
     font-size: 16px;
     font-style: italic;
     text-align: center;

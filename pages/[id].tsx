@@ -1,9 +1,7 @@
 import React from 'react';
 
 import client from '../utils/prismicHelpers';
-import {
-  Header, Banner, SliceZone, List, Container,
-} from '../components';
+import { Header, Banner, SliceZone, List, Container } from '../components';
 import DefaultLayout from '../layouts';
 
 import { getSortedEpisodesData } from '../lib/episodes';
@@ -17,10 +15,7 @@ function Page({ listElementsData, doc, menu }) {
         <div className={doc.uid}>
           <Header menu={menu} pageData={doc.data} />
           <Container>
-            <List
-              type={doc.uid}
-              listElementsData={listElementsData}
-            />
+            <List type={doc.uid} listElementsData={listElementsData} />
           </Container>
         </div>
       </DefaultLayout>

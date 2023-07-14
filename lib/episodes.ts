@@ -31,11 +31,12 @@ export async function getSortedEpisodesData() {
 
 export async function getAllEpisodeIds() {
   const episodes = predicateQuery('document.type', 'episode').then(
-    (episodesData) => episodesData.results.map((episode) => ({
-      params: {
-        id: episode.uid,
-      },
-    })),
+    (episodesData) =>
+      episodesData.results.map((episode) => ({
+        params: {
+          id: episode.uid,
+        },
+      }))
   );
 
   return episodes;
