@@ -41,7 +41,7 @@ export async function predicateQuery(type, predicate, order) {
 export const getFirstOrLastbyType = async (
   type,
   getFirst = false,
-  tags = []
+  tags = [],
 ) => {
   const order = getFirst ? 'asc' : 'desc';
   const response = client.get({

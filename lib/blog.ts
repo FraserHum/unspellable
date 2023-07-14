@@ -31,13 +31,11 @@ export async function getSortedBlogData() {
 }
 
 export async function getAllBlogIds() {
-  const blogs = predicateQuery('document.type', 'blog').then((blogsData) =>
-    blogsData.results.map((blog) => ({
-      params: {
-        id: blog.uid,
-      },
-    }))
-  );
+  const blogs = predicateQuery('document.type', 'blog').then((blogsData) => blogsData.results.map((blog) => ({
+    params: {
+      id: blog.uid,
+    },
+  })));
 
   return blogs;
 }

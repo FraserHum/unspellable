@@ -30,10 +30,9 @@ const createClientOptions = (req = null, prismicAccessToken = null) => {
   };
 };
 // Client method to query documents from the Prismic repo
-const client = (req = null) =>
-  prismic.createClient(
-    apiEndpoint,
-    createClientOptions(req, accessToken || null)
-  );
+const client = (req = null) => prismic.createClient(
+  apiEndpoint,
+  createClientOptions(req, accessToken || null),
+);
 
 export default client();

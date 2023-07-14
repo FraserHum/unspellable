@@ -1,5 +1,7 @@
 import React from 'react';
-import { Header, Container, EpisodeCard, SliceZone } from '../components';
+import {
+  Header, Container, EpisodeCard, SliceZone,
+} from '../components';
 import DefaultLayout from '../layouts';
 import client from '../utils/prismicHelpers';
 import { getLatestEpisodeData } from '../lib/episodes';
@@ -26,7 +28,9 @@ export async function getStaticProps({
   };
 }
 
-export default function Home({ doc, menu, episodeData, theme }) {
+export default function Home({
+  doc, menu, episodeData, theme,
+}) {
   return (
     <DefaultLayout>
       <Header menu={menu} pageData={doc.data} theme={theme} />
