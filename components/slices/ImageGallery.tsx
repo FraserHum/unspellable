@@ -1,6 +1,6 @@
 import React from 'react';
 import { RichText } from 'prismic-reactjs';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import DocLink from '../DocLink';
 import { linkResolver } from '../../prismic-configuration';
 

@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import React from 'react';
 import DefaultLayout from '../../layouts';
 import { getAllEpisodeIds, getEpisodeData } from '../../lib/episodes';

@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import DefaultLayout from 'layouts';
 import React from 'react';
 import { getAllBlogIds, getBlogData } from '../../lib/blog';
