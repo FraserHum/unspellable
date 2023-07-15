@@ -21,7 +21,7 @@ const StyledEpisodeTitleDiv = styled.div`
 `;
 
 export default function EpisodeCard({ id, date, title, imageURL }) {
-  const [localeDate, setLocaleDate] = React.useState(null);
+  const [localeDate, setLocaleDate] = React.useState(new Date().toISOString());
 
   useEffect(() => {
     const dateObj = new Date(date);
@@ -43,7 +43,6 @@ export default function EpisodeCard({ id, date, title, imageURL }) {
       <CollapseableSection isOpen={false}>
         <div>Episode Description:</div>
         <div>TRIGGER WARNINGS</div>
-        <CollapseableSection isOpen={false} />
       </CollapseableSection>
     </EpisodeCardcontainer>
   );

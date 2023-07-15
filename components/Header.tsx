@@ -1,28 +1,39 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useSyncExternalStore } from 'react';
 import NextLink from 'next/link';
 import { RichText } from 'prismic-reactjs';
 import styled from 'styled-components';
 import DocLink from './DocLink';
+import client from '../utils/prismicHelpers';
 
 const StyledHeader = styled.header`
   background-color: #dbe5ce;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
 `;
 
 const StyledLink = styled(NextLink)`
   size: 1vw;
-  flex: 1 1 auto;
+  flex: 0 1 auto;
+  display: grid;
+  place-content: center;
 `;
 
 const Image = styled.img`
-  width: 10vw;
+  max-width: 10vw;
+  max-height: 200px;
+  min-width: 100px;
+  min-height: 100px;
   flex: 1 1 auto;
+  height: auto;
+  align-self: center;
 `;
 const StyledHeading2 = styled.h2`
   text-align: center;
   color: #3b5d4e;
   font-family: 'Vidaloka', serif;
-  font-size: 60px;
+  font-size: clamp(1.6em, 3vw, 3em);
   font-weight: 900;
   line-height: 70px;
   margin: 0 auto;
@@ -31,40 +42,50 @@ const StyledHeading2 = styled.h2`
 const StyledP = styled.p`
   color: #231f20;
   font-family: 'Vidaloka', serif;
-  font-size: 25px;
+  font-size: clamp(1.1em, 1.6vw, 1.5em);
   font-weight: 200;
   line-height: 25px;
   text-align: center;
   margin: 0 auto;
 `;
 
-const StyledDiv = styled.div`
-  flex: 1 1 auto;
-`;
-
-const StyledA = styled.a`
-  width: 100%;
-  flex-basis: fit-content;
-  cursor: pointer;
+const TitleTagDiv = styled.div`
+  flex: 0 1 auto;
+  align-items: center;
+  justify-content: space-evenly;
+  display: flex;
+  flex-direction: column;
 `;
 
 const StyledList = styled.ul`{"type":"add","fieldType":"Color"}
+list-style-type: none;
     display: flex;
     flex-direction: row;
-    flex: 1 1 auto;
-    justify-content: 'space-evenly';
+    flex: 0 1 auto;
+    justify-content: 'flex-start';
     list-style-type: none;
    margin: 0 auto;
    padding: 0;
+   background-color: #dbe5ce;
 `;
 
 const StyledNav = styled.nav`
-  flex: 1 1 auto;
-  width: 100vw;
+  width: 100%;
+  background-color: grey;
 `;
 
 const Titlebar = styled.div`
+  max-height: 200px;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  align-content: space-evenly;
+  max-width: 95vw;
+  width: 100%;
+  flex-direction: row;
   display: flex;
+  align-self: center;
+  flex-wrap: wrap;
 `;
 
 const StyledMenuListItem = styled.li`
@@ -75,31 +96,23 @@ const StyledMenuListItem = styled.li`
   text-align: center;
 `;
 
-function Header({ menu, pageData, theme }) {
+export const getStaticProps = async () => {
+  const menu = (await client.getSingle('menu')) || {};
+  return {
+    props: {
+      menu,
+    },
+  };
+};
+
+function MenuLink({ menuLink }) {
   return (
-    <StyledHeader className="site-header">
-      <Titlebar>
-        <StyledLink href="/">
-          <Image
-            src={menu.data.logo.url}
-            alt="Unspellable Podcast Logo"
-            className="logo"
-          />
-        </StyledLink>
-        <StyledDiv>
-          <StyledHeading2>{RichText.asText(pageData.title)}</StyledHeading2>
-          <StyledP>{RichText.asText(pageData.tagline)}</StyledP>
-        </StyledDiv>
-        <StyledLink href="/">
-          <Image
-            src={menu.data.logo.url}
-            alt="Unspellable Podcast Logo"
-            className="logo"
-          />
-        </StyledLink>
-      </Titlebar>
-      <MenuLinks menu={menu} theme={theme} />
-    </StyledHeader>
+    <StyledMenuListItem
+      backgroundColor={menuLink.backgroundcolor}
+      textColor={menuLink.textcolor}
+    >
+      <DocLink link={menuLink.link}>{RichText.asText(menuLink.label)}</DocLink>
+    </StyledMenuListItem>
   );
 }
 
@@ -122,14 +135,51 @@ function MenuLinks({ menu, theme }) {
   return null;
 }
 
-function MenuLink({ menuLink }) {
+function Header({ menu, pageData, theme }) {
+  const subscribe = (callBack) => {
+    window.addEventListener('resize', callBack);
+    window.addEventListener('load', callBack);
+    return () => {
+      window.removeEventListener('resize', callBack);
+      window.removeEventListener('load', callBack);
+    };
+  };
+
+  const getSnapshot = () => window.innerWidth > 1000;
+  const getServerSnapShot = () => false;
+
+  const isSmallScreen = useSyncExternalStore(
+    subscribe,
+    getSnapshot,
+    getServerSnapShot,
+  );
+
   return (
-    <StyledMenuListItem
-      backgroundColor={menuLink.backgroundcolor}
-      textColor={menuLink.textcolor}
-    >
-      <DocLink link={menuLink.link}>{RichText.asText(menuLink.label)}</DocLink>
-    </StyledMenuListItem>
+    <StyledHeader className="site-header">
+      <Titlebar>
+        <StyledLink href="/">
+          <Image
+            src={menu.data.logo.url}
+            alt="Unspellable Podcast Logo"
+            className="logo"
+          />
+        </StyledLink>
+        <TitleTagDiv>
+          <StyledHeading2>{RichText.asText(pageData.title)}</StyledHeading2>
+          <StyledP>{RichText.asText(pageData.tagline)}</StyledP>
+        </TitleTagDiv>
+        <StyledLink href="/">
+          {isSmallScreen ? (
+            <Image
+              src={menu.data.logo.url}
+              alt="Unspellable Podcast Logo"
+              className="logo"
+            />
+          ) : null}
+        </StyledLink>
+      </Titlebar>
+      <MenuLinks menu={menu} theme={theme} />
+    </StyledHeader>
   );
 }
 

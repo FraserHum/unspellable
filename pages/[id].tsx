@@ -1,9 +1,7 @@
 import React from 'react';
 
 import client from '../utils/prismicHelpers';
-import {
-  Header, Banner, SliceZone, List, Container,
-} from '../components';
+import { Header, List, Container } from '../components';
 import DefaultLayout from '../layouts';
 
 import { getSortedEpisodesData } from '../lib/episodes';
