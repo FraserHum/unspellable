@@ -1,30 +1,27 @@
 import { Metadata } from "next";
-import { SliceZone } from "@prismicio/react";
+import { PrismicRichText, SliceZone } from "@prismicio/react";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import { Navigation } from "@/components/Navigation";
 import { EpisodeCard } from "@/components/EpisodeCard";
 import { filter } from "@prismicio/client";
-import { EpisodeDocument, EpisodesDocument } from "../../prismicio-types";
+import { Header } from "@/components/Header";
 
 export default async function Page() {
   const client = createClient();
-  const home = await client.getSingle("home");
-  const nav = await client.getSingle("nav");
-  const mostRecent = await client.getFirst<EpisodeDocument>({
-    filters: [filter.at("document.type", "episode")],
-    orderings: {
-      field: "document.first_publication_date",
-      direction: "asc",
-    },
-  });
+  const episodesPage = await client.getSingle("episodes");
+  const episodes = await client.getAllByType("episode");
 
   return (
-    <>
-      <EpisodeCard episode={mostRecent}></EpisodeCard>
-      <SliceZone slices={home.data.slices} components={components} />
-    </>
+    <main className="bg-episodes w-full md:w-11/12">
+      <div>{episodesPage.data.title}</div>
+      <div>{episodesPage.data.subtitle}</div>
+      <PrismicRichText field={episodesPage.data.description} />
+      {episodes.map((episode) => (
+        <EpisodeCard key={episode.id} episode={episode} />
+      ))}
+    </main>
   );
 }
 

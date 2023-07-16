@@ -1,0 +1,20 @@
+{
+  "id": "nav",
+  "label": "nav",
+  "format": "custom",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "logo": {
+        "type": "Image",
+        "config": { "label": "logo", "constraint": {}, "thumbnails": [] }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": { "choices": { "nav_links": { "type": "SharedSlice" } } }
+      }
+    }
+  }
+}
