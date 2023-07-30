@@ -7,6 +7,7 @@ module.exports = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 0% 0%, var(--tw-gradient-stops))",
+        sparkles: "url('/public/bitmap.svg')",
       },
       spacing: {
         "1/2": "50%",

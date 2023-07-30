@@ -4,6 +4,101 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type AboutDocumentDataSlicesSlice = never;
+
+/**
+ * Content for about documents
+ */
+interface AboutDocumentData {
+  /**
+   * title field in *about*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * subtitle field in *about*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.subtitle
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtitle: prismic.KeyTextField;
+
+  /**
+   * description field in *about*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Slice Zone field in *about*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<AboutDocumentDataSlicesSlice>
+  /**
+   * Meta Description field in *about*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: about.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *about*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *about*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: about.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * about document from Prismic
+ *
+ * - **API ID**: `about`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type AboutDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<Simplify<AboutDocumentData>, "about", Lang>;
+
 type EpisodeDocumentDataSlicesSlice = never;
 
 /**
@@ -450,6 +545,31 @@ export interface ThemeDocumentDataEpisodesItem {
 }
 
 /**
+ * Item in *theme → episode card*
+ */
+export interface ThemeDocumentDataEpisodeCardItem {
+  /**
+   * text color field in *theme → episode card*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: theme.episode_card[].text_color
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  text_color: prismic.ColorField;
+
+  /**
+   * background color field in *theme → episode card*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: theme.episode_card[].background_color
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  background_color: prismic.ColorField;
+}
+
+/**
  * Content for theme documents
  */
 interface ThemeDocumentData {
@@ -496,6 +616,17 @@ interface ThemeDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#group
    */
   episodes: prismic.GroupField<Simplify<ThemeDocumentDataEpisodesItem>>;
+
+  /**
+   * episode card field in *theme*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: theme.episode_card[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  episode_card: prismic.GroupField<Simplify<ThemeDocumentDataEpisodeCardItem>>;
 }
 
 /**
@@ -511,6 +642,7 @@ export type ThemeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<ThemeDocumentData>, "theme", Lang>;
 
 export type AllDocumentTypes =
+  | AboutDocument
   | EpisodeDocument
   | EpisodesDocument
   | HomeDocument
@@ -540,26 +672,6 @@ export interface NavLinksSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   text: prismic.KeyTextField;
-
-  /**
-   * text color field in *NavLinks → Primary*
-   *
-   * - **Field Type**: Color
-   * - **Placeholder**: *None*
-   * - **API ID Path**: nav_links.primary.text_color
-   * - **Documentation**: https://prismic.io/docs/field#color
-   */
-  text_color: prismic.ColorField;
-
-  /**
-   * background color field in *NavLinks → Primary*
-   *
-   * - **Field Type**: Color
-   * - **Placeholder**: *None*
-   * - **API ID Path**: nav_links.primary.background_color
-   * - **Documentation**: https://prismic.io/docs/field#color
-   */
-  background_color: prismic.ColorField;
 }
 
 /**
@@ -667,6 +779,8 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      AboutDocument,
+      AboutDocumentData,
       EpisodeDocument,
       EpisodeDocumentData,
       EpisodesDocument,

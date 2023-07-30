@@ -5,7 +5,7 @@ import { PrismicLink, PrismicText, SliceZone } from "@prismicio/react";
 import { NavDocument } from "../../prismicio-types";
 
 export const Navigation = ({ nav }: { nav: NavDocument }) => (
-  <nav className="flex justify-center w-full bg-title">
+  <nav className="flex justify-center w-full">
     <ul className="flex container justify-stretch">
       <SliceZone slices={nav.data.slices} components={components} />
     </ul>

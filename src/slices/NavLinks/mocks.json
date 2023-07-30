@@ -14,16 +14,6 @@
 				"__TYPE__": "FieldContent",
 				"value": "accurate",
 				"type": "Text"
-			},
-			"text_color": {
-				"__TYPE__": "FieldContent",
-				"value": "#8f5841",
-				"type": "Color"
-			},
-			"background_color": {
-				"__TYPE__": "FieldContent",
-				"value": "#9a474e",
-				"type": "Color"
 			}
 		},
 		"items": []

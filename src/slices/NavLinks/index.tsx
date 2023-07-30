@@ -1,5 +1,5 @@
 import { createClient } from "@/prismicio";
-import { getThemeItem } from "@/utils/theme";
+import { getThemeSection, getThemeSectionStyle } from "@/utils/theme";
 import { Content } from "@prismicio/client";
 import { PrismicNextLink } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
@@ -14,16 +14,12 @@ export type NavLinksProps = SliceComponentProps<Content.NavLinksSlice>;
  */
 const NavLinks = async ({ slice }: NavLinksProps): Promise<JSX.Element> => {
   const client = createClient();
-  const theme = (await client.getSingle("theme")).data;
   const linkText = slice.primary.text ?? "default";
-  const linkTheme = getThemeItem(linkText, theme)[0];
+  const linkTheme = await getThemeSection(client, linkText);
   return (
     <li
       className="grow grid place-items-center rounded-t-lg text-xl p-1"
-      style={{
-        color: linkTheme?.text_color ?? "red",
-        backgroundColor: linkTheme?.background_color ?? "fuchsia",
-      }}
+      style={getThemeSectionStyle(linkTheme)}
     >
       <PrismicNextLink field={slice.primary.link}>
         {slice.primary.text?.toLocaleUpperCase()}

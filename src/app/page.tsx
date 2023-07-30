@@ -7,7 +7,11 @@ import { Navigation } from "@/components/Navigation";
 import { EpisodeCard } from "@/components/EpisodeCard";
 import { filter } from "@prismicio/client";
 import { EpisodeDocument, EpisodesDocument } from "../../prismicio-types";
-import { getThemeItem } from "@/utils/theme";
+import {
+  getSectionFromTheme,
+  getThemeSection,
+  getThemeSectionStyle,
+} from "@/utils/theme";
 
 export default async function Page() {
   const client = createClient();
@@ -19,16 +23,12 @@ export default async function Page() {
       direction: "desc",
     },
   });
-  const theme = (await client.getSingle("theme")).data;
-  const linkTheme = getThemeItem("home", theme)[0];
+  const homeTheme = await getThemeSection(client, "home");
 
   return (
     <main
-      className="container flex-col justify-center items-center"
-      style={{
-        color: linkTheme?.text_color ?? "red",
-        backgroundColor: linkTheme?.background_color ?? "fuchsia",
-      }}
+      className="container flex-col justify-center items-center rounded-b-lg"
+      style={getThemeSectionStyle(homeTheme)}
     >
       <EpisodeCard episode={mostRecent}></EpisodeCard>
       <SliceZone slices={home.data.slices} components={components} />
