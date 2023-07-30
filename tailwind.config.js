@@ -1,11 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/slices/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
       backgroundImage: {
@@ -25,6 +20,13 @@ module.exports = {
         episodes: "#62907b",
         characters: "#FFFFFF",
         title: "#484d52",
+        pale_purple: "#E0D3DE",
+        space_cadet: "#201E50",
+        english_violet: "#51355a",
+        auburn: "#9E2B25",
+        dark_purple: "#331832",
+        fairy_tale: "#EAC4D5",
+        ivory: "#FFFCE7",
       },
     },
   },

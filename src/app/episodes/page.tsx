@@ -2,12 +2,7 @@ import { Metadata } from "next";
 import { PrismicRichText, SliceZone } from "@prismicio/react";
 
 import { createClient } from "@/prismicio";
-import { components } from "@/slices";
-import { Navigation } from "@/components/Navigation";
 import { EpisodeCard } from "@/components/EpisodeCard";
-import { filter } from "@prismicio/client";
-import { Header } from "@/components/Header";
-
 export default async function Page() {
   const client = createClient();
   const episodesPage = await client.getSingle("episodes");

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -30,7 +31,7 @@
   },
   "devDependencies": {
     "@prismicio/types": "^0.2.8",
-    "@slicemachine/adapter-next": "^0.3.4",
-    "slice-machine-ui": "^1.5.1"
+    "@slicemachine/adapter-next": "^0.3.7",
+    "slice-machine-ui": "^1.6.0"
   }
 }

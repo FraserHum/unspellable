@@ -4,4 +4,5 @@ import dynamic from "next/dynamic";
 
 export const components = {
   nav_links: dynamic(() => import("./NavLinks")),
+  theme_item: dynamic(() => import("./ThemeItem")),
 };

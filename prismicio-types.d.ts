@@ -2,10 +2,13 @@
 
 import type * as prismic from "@prismicio/client";
 
-type Simplify<T> = {
-  [KeyType in keyof T]: T[KeyType];
-};
-/** Content for episode documents */
+type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
+
+type EpisodeDocumentDataSlicesSlice = never;
+
+/**
+ * Content for episode documents
+ */
 interface EpisodeDocumentData {
   /**
    * image field in *episode*
@@ -14,10 +17,10 @@ interface EpisodeDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: episode.image
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/image
-   *
+   * - **Documentation**: https://prismic.io/docs/field#image
    */
   image: prismic.ImageField<never>;
+
   /**
    * title field in *episode*
    *
@@ -25,10 +28,10 @@ interface EpisodeDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: episode.title
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   title: prismic.RichTextField;
+
   /**
    * subtitle field in *episode*
    *
@@ -36,10 +39,10 @@ interface EpisodeDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: episode.subtitle
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   subtitle: prismic.RichTextField;
+
   /**
    * description field in *episode*
    *
@@ -47,10 +50,10 @@ interface EpisodeDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: episode.description
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   description: prismic.RichTextField;
+
   /**
    * release date field in *episode*
    *
@@ -58,10 +61,10 @@ interface EpisodeDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: episode.release_date
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/date
-   *
+   * - **Documentation**: https://prismic.io/docs/field#date
    */
   release_date: prismic.DateField;
+
   /**
    * Slice Zone field in *episode*
    *
@@ -69,10 +72,9 @@ interface EpisodeDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: episode.slices[]
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
-   *
+   * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<EpisodeDocumentDataSlicesSlice>;
+  slices: prismic.SliceZone<EpisodeDocumentDataSlicesSlice>
   /**
    * Meta Description field in *episode*
    *
@@ -80,10 +82,10 @@ interface EpisodeDocumentData {
    * - **Placeholder**: A brief summary of the page
    * - **API ID Path**: episode.meta_description
    * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
-   */
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
   meta_description: prismic.KeyTextField;
+
   /**
    * Meta Image field in *episode*
    *
@@ -91,10 +93,10 @@ interface EpisodeDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: episode.meta_image
    * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/core-concepts/image
-   *
+   * - **Documentation**: https://prismic.io/docs/field#image
    */
   meta_image: prismic.ImageField<never>;
+
   /**
    * Meta Title field in *episode*
    *
@@ -102,22 +104,17 @@ interface EpisodeDocumentData {
    * - **Placeholder**: A title of the page used for social media and search engines
    * - **API ID Path**: episode.meta_title
    * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   meta_title: prismic.KeyTextField;
 }
-/**
- * Slice for *episode → Slice Zone*
- *
- */
-type EpisodeDocumentDataSlicesSlice = never;
+
 /**
  * episode document from Prismic
  *
  * - **API ID**: `episode`
  * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ * - **Documentation**: https://prismic.io/docs/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
@@ -127,7 +124,12 @@ export type EpisodeDocument<Lang extends string = string> =
     "episode",
     Lang
   >;
-/** Content for episodes documents */
+
+type EpisodesDocumentDataSlicesSlice = never;
+
+/**
+ * Content for episodes documents
+ */
 interface EpisodesDocumentData {
   /**
    * title field in *episodes*
@@ -136,10 +138,10 @@ interface EpisodesDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: episodes.title
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   title: prismic.KeyTextField;
+
   /**
    * subtitle field in *episodes*
    *
@@ -147,10 +149,10 @@ interface EpisodesDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: episodes.subtitle
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   subtitle: prismic.KeyTextField;
+
   /**
    * description field in *episodes*
    *
@@ -158,10 +160,10 @@ interface EpisodesDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: episodes.description
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   description: prismic.RichTextField;
+
   /**
    * Slice Zone field in *episodes*
    *
@@ -169,10 +171,9 @@ interface EpisodesDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: episodes.slices[]
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
-   *
+   * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<EpisodesDocumentDataSlicesSlice>;
+  slices: prismic.SliceZone<EpisodesDocumentDataSlicesSlice>
   /**
    * Meta Description field in *episodes*
    *
@@ -180,10 +181,10 @@ interface EpisodesDocumentData {
    * - **Placeholder**: A brief summary of the page
    * - **API ID Path**: episodes.meta_description
    * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
-   */
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
   meta_description: prismic.KeyTextField;
+
   /**
    * Meta Image field in *episodes*
    *
@@ -191,10 +192,10 @@ interface EpisodesDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: episodes.meta_image
    * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/core-concepts/image
-   *
+   * - **Documentation**: https://prismic.io/docs/field#image
    */
   meta_image: prismic.ImageField<never>;
+
   /**
    * Meta Title field in *episodes*
    *
@@ -202,22 +203,17 @@ interface EpisodesDocumentData {
    * - **Placeholder**: A title of the page used for social media and search engines
    * - **API ID Path**: episodes.meta_title
    * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   meta_title: prismic.KeyTextField;
 }
-/**
- * Slice for *episodes → Slice Zone*
- *
- */
-type EpisodesDocumentDataSlicesSlice = never;
+
 /**
  * episodes document from Prismic
  *
  * - **API ID**: `episodes`
  * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ * - **Documentation**: https://prismic.io/docs/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
@@ -227,7 +223,12 @@ export type EpisodesDocument<Lang extends string = string> =
     "episodes",
     Lang
   >;
-/** Content for Home documents */
+
+type HomeDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Home documents
+ */
 interface HomeDocumentData {
   /**
    * title field in *Home*
@@ -236,10 +237,10 @@ interface HomeDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: home.title
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   title: prismic.KeyTextField;
+
   /**
    * subtitle field in *Home*
    *
@@ -247,10 +248,10 @@ interface HomeDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: home.subtitle
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   subtitle: prismic.KeyTextField;
+
   /**
    * Slice Zone field in *Home*
    *
@@ -258,10 +259,9 @@ interface HomeDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: home.slices[]
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
-   *
+   * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<HomeDocumentDataSlicesSlice>;
+  slices: prismic.SliceZone<HomeDocumentDataSlicesSlice>
   /**
    * Meta Description field in *Home*
    *
@@ -269,10 +269,10 @@ interface HomeDocumentData {
    * - **Placeholder**: A brief summary of the page
    * - **API ID Path**: home.meta_description
    * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
-   */
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
   meta_description: prismic.KeyTextField;
+
   /**
    * Meta Image field in *Home*
    *
@@ -280,10 +280,10 @@ interface HomeDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: home.meta_image
    * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/core-concepts/image
-   *
+   * - **Documentation**: https://prismic.io/docs/field#image
    */
   meta_image: prismic.ImageField<never>;
+
   /**
    * Meta Title field in *Home*
    *
@@ -291,28 +291,28 @@ interface HomeDocumentData {
    * - **Placeholder**: A title of the page used for social media and search engines
    * - **API ID Path**: home.meta_title
    * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   meta_title: prismic.KeyTextField;
 }
-/**
- * Slice for *Home → Slice Zone*
- *
- */
-type HomeDocumentDataSlicesSlice = never;
+
 /**
  * Home document from Prismic
  *
  * - **API ID**: `home`
  * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ * - **Documentation**: https://prismic.io/docs/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
 export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<HomeDocumentData>, "home", Lang>;
-/** Content for nav documents */
+
+type NavDocumentDataSlicesSlice = NavLinksSlice;
+
+/**
+ * Content for nav documents
+ */
 interface NavDocumentData {
   /**
    * logo field in *nav*
@@ -321,10 +321,10 @@ interface NavDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: nav.logo
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/image
-   *
+   * - **Documentation**: https://prismic.io/docs/field#image
    */
   logo: prismic.ImageField<never>;
+
   /**
    * Slice Zone field in *nav*
    *
@@ -332,108 +332,331 @@ interface NavDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: nav.slices[]
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
-   *
+   * - **Documentation**: https://prismic.io/docs/field#slices
    */
   slices: prismic.SliceZone<NavDocumentDataSlicesSlice>;
 }
-/**
- * Slice for *nav → Slice Zone*
- *
- */
-type NavDocumentDataSlicesSlice = NavLinksSlice;
+
 /**
  * nav document from Prismic
  *
  * - **API ID**: `nav`
  * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ * - **Documentation**: https://prismic.io/docs/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
 export type NavDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<NavDocumentData>, "nav", Lang>;
+
+/**
+ * Item in *theme → default*
+ */
+export interface ThemeDocumentDataDefaultItem {
+  /**
+   * text color field in *theme → default*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: theme.default[].text_color
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  text_color: prismic.ColorField;
+
+  /**
+   * background color field in *theme → default*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: theme.default[].background_color
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  background_color: prismic.ColorField;
+}
+
+/**
+ * Item in *theme → characters*
+ */
+export interface ThemeDocumentDataCharactersItem {
+  /**
+   * text color field in *theme → characters*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: theme.characters[].text_color
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  text_color: prismic.ColorField;
+
+  /**
+   * background color field in *theme → characters*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: theme.characters[].background_color
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  background_color: prismic.ColorField;
+}
+
+/**
+ * Item in *theme → about*
+ */
+export interface ThemeDocumentDataAboutItem {
+  /**
+   * text color field in *theme → about*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: theme.about[].text_color
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  text_color: prismic.ColorField;
+
+  /**
+   * background color field in *theme → about*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: theme.about[].background_color
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  background_color: prismic.ColorField;
+}
+
+/**
+ * Item in *theme → episodes*
+ */
+export interface ThemeDocumentDataEpisodesItem {
+  /**
+   * text color field in *theme → episodes*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: theme.episodes[].text_color
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  text_color: prismic.ColorField;
+
+  /**
+   * background color field in *theme → episodes*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: theme.episodes[].background_color
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  background_color: prismic.ColorField;
+}
+
+/**
+ * Content for theme documents
+ */
+interface ThemeDocumentData {
+  /**
+   * default field in *theme*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: theme.default[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  default: prismic.GroupField<Simplify<ThemeDocumentDataDefaultItem>>;
+
+  /**
+   * characters field in *theme*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: theme.characters[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  characters: prismic.GroupField<Simplify<ThemeDocumentDataCharactersItem>>;
+
+  /**
+   * about field in *theme*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: theme.about[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  about: prismic.GroupField<Simplify<ThemeDocumentDataAboutItem>>;
+
+  /**
+   * episodes field in *theme*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: theme.episodes[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  episodes: prismic.GroupField<Simplify<ThemeDocumentDataEpisodesItem>>;
+}
+
+/**
+ * theme document from Prismic
+ *
+ * - **API ID**: `theme`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ThemeDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<Simplify<ThemeDocumentData>, "theme", Lang>;
+
 export type AllDocumentTypes =
   | EpisodeDocument
   | EpisodesDocument
   | HomeDocument
-  | NavDocument;
+  | NavDocument
+  | ThemeDocument;
+
 /**
- * Primary content in NavLinks → Primary
- *
+ * Primary content in *NavLinks → Primary*
  */
-interface NavLinksSliceDefaultPrimary {
+export interface NavLinksSliceDefaultPrimary {
   /**
    * link field in *NavLinks → Primary*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
    * - **API ID Path**: nav_links.primary.link
-   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
-   *
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   link: prismic.LinkField;
+
   /**
    * text field in *NavLinks → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: nav_links.primary.text
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   text: prismic.KeyTextField;
+
   /**
    * text color field in *NavLinks → Primary*
    *
    * - **Field Type**: Color
    * - **Placeholder**: *None*
    * - **API ID Path**: nav_links.primary.text_color
-   * - **Documentation**: https://prismic.io/docs/core-concepts/color
-   *
+   * - **Documentation**: https://prismic.io/docs/field#color
    */
   text_color: prismic.ColorField;
+
   /**
    * background color field in *NavLinks → Primary*
    *
    * - **Field Type**: Color
    * - **Placeholder**: *None*
    * - **API ID Path**: nav_links.primary.background_color
-   * - **Documentation**: https://prismic.io/docs/core-concepts/color
-   *
+   * - **Documentation**: https://prismic.io/docs/field#color
    */
   background_color: prismic.ColorField;
 }
+
 /**
  * Default variation for NavLinks Slice
  *
  * - **API ID**: `default`
- * - **Description**: `Default`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
  */
 export type NavLinksSliceDefault = prismic.SharedSliceVariation<
   "default",
   Simplify<NavLinksSliceDefaultPrimary>,
   never
 >;
+
 /**
  * Slice variation for *NavLinks*
- *
  */
 type NavLinksSliceVariation = NavLinksSliceDefault;
+
 /**
  * NavLinks Shared Slice
  *
  * - **API ID**: `nav_links`
- * - **Description**: `NavLinks`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
+ * - **Description**: NavLinks
+ * - **Documentation**: https://prismic.io/docs/slice
  */
 export type NavLinksSlice = prismic.SharedSlice<
   "nav_links",
   NavLinksSliceVariation
 >;
+
+/**
+ * Primary content in *ThemeItem → Primary*
+ */
+export interface ThemeItemSliceDefaultPrimary {
+  /**
+   * item name field in *ThemeItem → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: theme_item.primary.item_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  item_name: prismic.KeyTextField;
+
+  /**
+   * text color field in *ThemeItem → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: theme_item.primary.text_color
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  text_color: prismic.ColorField;
+
+  /**
+   * background color field in *ThemeItem → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: theme_item.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  background_color: prismic.ColorField;
+}
+
+/**
+ * Default variation for ThemeItem Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ThemeItemSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ThemeItemSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ThemeItem*
+ */
+type ThemeItemSliceVariation = ThemeItemSliceDefault;
+
+/**
+ * ThemeItem Shared Slice
+ *
+ * - **API ID**: `theme_item`
+ * - **Description**: ThemeItem
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ThemeItemSlice = prismic.SharedSlice<
+  "theme_item",
+  ThemeItemSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -441,25 +664,26 @@ declare module "@prismicio/client" {
       options?: prismic.ClientConfig
     ): prismic.Client<AllDocumentTypes>;
   }
+
   namespace Content {
     export type {
-      EpisodeDocumentData,
-      EpisodeDocumentDataSlicesSlice,
       EpisodeDocument,
-      EpisodesDocumentData,
-      EpisodesDocumentDataSlicesSlice,
+      EpisodeDocumentData,
       EpisodesDocument,
-      HomeDocumentData,
-      HomeDocumentDataSlicesSlice,
+      EpisodesDocumentData,
       HomeDocument,
-      NavDocumentData,
-      NavDocumentDataSlicesSlice,
+      HomeDocumentData,
       NavDocument,
+      NavDocumentData,
+      ThemeDocument,
+      ThemeDocumentData,
       AllDocumentTypes,
-      NavLinksSliceDefaultPrimary,
-      NavLinksSliceDefault,
-      NavLinksSliceVariation,
       NavLinksSlice,
+      NavLinksSliceVariation,
+      NavLinksSliceDefault,
+      ThemeItemSlice,
+      ThemeItemSliceVariation,
+      ThemeItemSliceDefault,
     };
   }
 }

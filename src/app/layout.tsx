@@ -19,6 +19,7 @@ export default async function RootLayout({
 }) {
   const client = createClient();
   const nav = await client.getSingle("nav");
+
   return (
     <html lang="en">
       <body

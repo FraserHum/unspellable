@@ -7,24 +7,32 @@ import { Navigation } from "@/components/Navigation";
 import { EpisodeCard } from "@/components/EpisodeCard";
 import { filter } from "@prismicio/client";
 import { EpisodeDocument, EpisodesDocument } from "../../prismicio-types";
+import { getThemeItem } from "@/utils/theme";
 
 export default async function Page() {
   const client = createClient();
   const home = await client.getSingle("home");
-  const nav = await client.getSingle("nav");
   const mostRecent = await client.getFirst<EpisodeDocument>({
     filters: [filter.at("document.type", "episode")],
     orderings: {
       field: "document.first_publication_date",
-      direction: "asc",
+      direction: "desc",
     },
   });
+  const theme = (await client.getSingle("theme")).data;
+  const linkTheme = getThemeItem("home", theme)[0];
 
   return (
-    <>
+    <main
+      className="container flex-col justify-center items-center"
+      style={{
+        color: linkTheme?.text_color ?? "red",
+        backgroundColor: linkTheme?.background_color ?? "fuchsia",
+      }}
+    >
       <EpisodeCard episode={mostRecent}></EpisodeCard>
       <SliceZone slices={home.data.slices} components={components} />
-    </>
+    </main>
   );
 }
 
