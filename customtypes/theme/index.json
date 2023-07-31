@@ -1,0 +1,91 @@
+{
+  "id": "theme",
+  "label": "theme",
+  "format": "custom",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "default": {
+        "type": "Group",
+        "config": {
+          "label": "default",
+          "fields": {
+            "text_color": {
+              "type": "Color",
+              "config": { "label": "text color", "placeholder": "" }
+            },
+            "background_color": {
+              "type": "Color",
+              "config": { "label": "background color", "placeholder": "" }
+            }
+          }
+        }
+      },
+      "characters": {
+        "type": "Group",
+        "config": {
+          "label": "characters",
+          "fields": {
+            "text_color": {
+              "type": "Color",
+              "config": { "label": "text color", "placeholder": "" }
+            },
+            "background_color": {
+              "type": "Color",
+              "config": { "label": "background color", "placeholder": "" }
+            }
+          }
+        }
+      },
+      "about": {
+        "type": "Group",
+        "config": {
+          "label": "about",
+          "fields": {
+            "text_color": {
+              "type": "Color",
+              "config": { "label": "text color", "placeholder": "" }
+            },
+            "background_color": {
+              "type": "Color",
+              "config": { "label": "background color", "placeholder": "" }
+            }
+          }
+        }
+      },
+      "episodes": {
+        "type": "Group",
+        "config": {
+          "label": "episodes",
+          "fields": {
+            "text_color": {
+              "type": "Color",
+              "config": { "label": "text color", "placeholder": "" }
+            },
+            "background_color": {
+              "type": "Color",
+              "config": { "label": "background color", "placeholder": "" }
+            }
+          }
+        }
+      },
+      "episode_card": {
+        "type": "Group",
+        "config": {
+          "label": "episode card",
+          "fields": {
+            "text_color": {
+              "type": "Color",
+              "config": { "label": "text color", "placeholder": "" }
+            },
+            "background_color": {
+              "type": "Color",
+              "config": { "label": "background color", "placeholder": "" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

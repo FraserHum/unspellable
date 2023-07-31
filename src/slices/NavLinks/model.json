@@ -1,0 +1,27 @@
+{
+  "id": "nav_links",
+  "type": "SharedSlice",
+  "name": "NavLinks",
+  "description": "NavLinks",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "link": {
+          "type": "Link",
+          "config": { "label": "link", "placeholder": "", "select": null }
+        },
+        "text": {
+          "type": "Text",
+          "config": { "label": "text", "placeholder": "" }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

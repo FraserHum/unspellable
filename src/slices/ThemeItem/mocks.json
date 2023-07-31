@@ -1,0 +1,24 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"item_name": {
+				"__TYPE__": "FieldContent",
+				"value": "increase",
+				"type": "Text"
+			},
+			"text_color": {
+				"__TYPE__": "FieldContent",
+				"value": "#9bfe08",
+				"type": "Color"
+			},
+			"background_color": {
+				"__TYPE__": "FieldContent",
+				"value": "#53c60d",
+				"type": "Color"
+			}
+		},
+		"items": []
+	}
+]

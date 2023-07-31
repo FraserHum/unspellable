@@ -1,11 +1,6 @@
-const path = require('path')
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: "export",
+};
 
-module.exports = {
-    webpack(config) {
-        config.resolve.modules.push(path.resolve('./'))
-        return config
-    },
-    images: {
-        domains: ['images.prismic.io'],
-    },
-}
+module.exports = nextConfig;
