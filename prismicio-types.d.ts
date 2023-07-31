@@ -99,6 +99,40 @@ interface AboutDocumentData {
 export type AboutDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<AboutDocumentData>, "about", Lang>;
 
+type CollapsibleCollectionDocumentDataSlicesSlice = LinkWithImageSlice;
+
+/**
+ * Content for collapsible collection documents
+ */
+interface CollapsibleCollectionDocumentData {
+  /**
+   * Slice Zone field in *collapsible collection*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: collapsible_collection.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<CollapsibleCollectionDocumentDataSlicesSlice>;
+}
+
+/**
+ * collapsible collection document from Prismic
+ *
+ * - **API ID**: `collapsible_collection`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CollapsibleCollectionDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<CollapsibleCollectionDocumentData>,
+    "collapsible_collection",
+    Lang
+  >;
+
 type EpisodeDocumentDataSlicesSlice = never;
 
 /**
@@ -161,6 +195,17 @@ interface EpisodeDocumentData {
   release_date: prismic.DateField;
 
   /**
+   * music_links field in *episode*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: episode.music_links
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  music_links: prismic.LinkField;
+
+  /**
    * Slice Zone field in *episode*
    *
    * - **Field Type**: Slice Zone
@@ -220,7 +265,7 @@ export type EpisodeDocument<Lang extends string = string> =
     Lang
   >;
 
-type EpisodesDocumentDataSlicesSlice = never;
+type EpisodesDocumentDataSlicesSlice = ChapterSlice;
 
 /**
  * Content for episodes documents
@@ -643,11 +688,172 @@ export type ThemeDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | AboutDocument
+  | CollapsibleCollectionDocument
   | EpisodeDocument
   | EpisodesDocument
   | HomeDocument
   | NavDocument
   | ThemeDocument;
+
+/**
+ * Primary content in *Chapter → Primary*
+ */
+export interface ChapterSliceDefaultPrimary {
+  /**
+   * Title field in *Chapter → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: chapter.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * description field in *Chapter → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: chapter.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * number of episodes field in *Chapter → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: chapter.primary.number_of_episodes
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  number_of_episodes: prismic.NumberField;
+}
+
+/**
+ * Default variation for Chapter Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ChapterSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ChapterSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Chapter*
+ */
+type ChapterSliceVariation = ChapterSliceDefault;
+
+/**
+ * Chapter Shared Slice
+ *
+ * - **API ID**: `chapter`
+ * - **Description**: Chapter
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ChapterSlice = prismic.SharedSlice<
+  "chapter",
+  ChapterSliceVariation
+>;
+
+/**
+ * Default variation for CollapsibleCollection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CollapsibleCollectionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *CollapsibleCollection*
+ */
+type CollapsibleCollectionSliceVariation = CollapsibleCollectionSliceDefault;
+
+/**
+ * CollapsibleCollection Shared Slice
+ *
+ * - **API ID**: `collapsible_collection`
+ * - **Description**: CollapsibleCollection
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CollapsibleCollectionSlice = prismic.SharedSlice<
+  "collapsible_collection",
+  CollapsibleCollectionSliceVariation
+>;
+
+/**
+ * Primary content in *LinkWithImage → Primary*
+ */
+export interface LinkWithImageSliceDefaultPrimary {
+  /**
+   * link field in *LinkWithImage → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: link_with_image.primary.link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+
+  /**
+   * image field in *LinkWithImage → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: link_with_image.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * description field in *LinkWithImage → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: link_with_image.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Default variation for LinkWithImage Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LinkWithImageSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<LinkWithImageSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *LinkWithImage*
+ */
+type LinkWithImageSliceVariation = LinkWithImageSliceDefault;
+
+/**
+ * LinkWithImage Shared Slice
+ *
+ * - **API ID**: `link_with_image`
+ * - **Description**: LinkWithImage
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LinkWithImageSlice = prismic.SharedSlice<
+  "link_with_image",
+  LinkWithImageSliceVariation
+>;
 
 /**
  * Primary content in *NavLinks → Primary*
@@ -781,6 +987,8 @@ declare module "@prismicio/client" {
     export type {
       AboutDocument,
       AboutDocumentData,
+      CollapsibleCollectionDocument,
+      CollapsibleCollectionDocumentData,
       EpisodeDocument,
       EpisodeDocumentData,
       EpisodesDocument,
@@ -792,6 +1000,15 @@ declare module "@prismicio/client" {
       ThemeDocument,
       ThemeDocumentData,
       AllDocumentTypes,
+      ChapterSlice,
+      ChapterSliceVariation,
+      ChapterSliceDefault,
+      CollapsibleCollectionSlice,
+      CollapsibleCollectionSliceVariation,
+      CollapsibleCollectionSliceDefault,
+      LinkWithImageSlice,
+      LinkWithImageSliceVariation,
+      LinkWithImageSliceDefault,
       NavLinksSlice,
       NavLinksSliceVariation,
       NavLinksSliceDefault,

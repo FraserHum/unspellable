@@ -3,6 +3,9 @@
 import dynamic from "next/dynamic";
 
 export const components = {
+  chapter: dynamic(() => import("./Chapter")),
+  collapsible_collection: dynamic(() => import("./CollapsibleCollection")),
+  link_with_image: dynamic(() => import("./LinkWithImage")),
   nav_links: dynamic(() => import("./NavLinks")),
   theme_item: dynamic(() => import("./ThemeItem")),
 };

@@ -1,0 +1,30 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "certain",
+				"type": "Text"
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Quis cillum quis nostrud Lorem Lorem dolore nisi exercitation fugiat cupidatat ut aliquip dolor non ut."
+						}
+					}
+				]
+			},
+			"number_of_episodes": {
+				"__TYPE__": "FieldContent",
+				"value": "99",
+				"type": "Number"
+			}
+		},
+		"items": []
+	}
+]

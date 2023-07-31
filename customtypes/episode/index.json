@@ -42,6 +42,10 @@
         "type": "Date",
         "config": { "label": "release date", "placeholder": "" }
       },
+      "music_links": {
+        "type": "Link",
+        "config": { "label": "music_links", "placeholder": "", "select": null }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

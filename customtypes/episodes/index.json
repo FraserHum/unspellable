@@ -26,7 +26,7 @@
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
-        "config": { "choices": {} }
+        "config": { "choices": { "chapter": { "type": "SharedSlice" } } }
       }
     },
     "SEO & Metadata": {
