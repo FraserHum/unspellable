@@ -52,7 +52,7 @@ export function Scroller({ children, baseVelocity = 10 }: ParallaxProps) {
 
     moveBy += directionFactor.current * moveBy * velocityFactor.get();
 
-    baseY.set(baseY.get() + moveBy);
+    baseY.set(baseY.get() - moveBy);
   });
 
   /**

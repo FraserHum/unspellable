@@ -1,6 +1,5 @@
 import { Client, ColorField, Content } from "@prismicio/client";
 import { ThemeDocumentData } from "../../prismicio-types";
-import { createClient } from "@/prismicio";
 
 export const defaultTheme: ThemeDocumentData = {
   default: [
@@ -22,6 +21,12 @@ export const defaultTheme: ThemeDocumentData = {
     },
   ],
   episodes: [
+    {
+      text_color: "#FFFCE7",
+      background_color: "#3B5D4E",
+    },
+  ],
+  episode_card: [
     {
       text_color: "#FFFCE7",
       background_color: "#3B5D4E",

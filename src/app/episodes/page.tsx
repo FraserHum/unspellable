@@ -12,12 +12,16 @@ export default async function Page() {
 
   return (
     <main
-      className="container rounded-b-lg"
+      className="container rounded-b-lg p-2"
       style={getThemeSectionStyle(episodesTheme)}
     >
-      <div className="h-screen">{episodesPage.data.title}</div>
-      <div className="h-screen">{episodesPage.data.subtitle}</div>
-      <div className="h-screen">
+      <h1 className="p-2 mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl lg:text-6xl">
+        {episodesPage.data.title}
+      </h1>
+      <h2 className="p-2 text-3xl font-bold tracking-tight sm:text-4xl">
+        {episodesPage.data.subtitle}
+      </h2>
+      <div className="p-2">
         <PrismicRichText field={episodesPage.data.description} />
       </div>
 

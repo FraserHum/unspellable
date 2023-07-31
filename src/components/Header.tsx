@@ -1,9 +1,10 @@
 import { PrismicNextImage } from "@prismicio/next";
 import { Navigation } from "./Navigation";
 import { Vidaloka } from "next/font/google";
+import { NavDocument } from "../../prismicio-types";
 
 const vidaloka = Vidaloka({ subsets: ["latin"], weight: "400" });
-export const Header = ({ nav }) => {
+export const Header = ({ nav }: { nav: NavDocument }) => {
   return (
     <header className="w-full">
       <div className="flex flex-col md:flex-row items-center justify-center">

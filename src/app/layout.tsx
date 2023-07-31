@@ -28,7 +28,10 @@ export default async function RootLayout({
         className={`${inter.className} bg-emerald bg-cover bg-no-repeat flex flex-col items-center min-h-screen bg-fixed`}
       >
         <Scroller>
-          <Sparkles />
+          <div className="flex flex-row w-100">
+            <Sparkles />
+            <Sparkles />
+          </div>
         </Scroller>
         <Header nav={nav} />
         {children}
