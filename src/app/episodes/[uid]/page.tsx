@@ -6,6 +6,7 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import { PrismicNextImage } from "@prismicio/next";
 import { getThemeSection, getThemeSectionStyle } from "@/utils/theme";
+import { Collapsible } from "@/components/Collapsible";
 
 type Params = { uid: string };
 
@@ -30,9 +31,9 @@ export default async function Page({ params }: { params: Params }) {
       <PrismicNextImage field={data.image} />
       <>{data.release_date}</>
       <SliceZone slices={data.slices} components={components} />
-      <div>
+      <Collapsible>
         <SliceZone slices={links.data.slices} components={components} />
-      </div>
+      </Collapsible>
     </main>
   );
 }
