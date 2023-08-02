@@ -18,7 +18,7 @@ export const EpisodeCard = async ({
   const theme = await getThemeSection(client, "episode_card");
   return (
     <div
-      className="p-6 max-w-sm mx-auto rounded-xl shadow-lg flex items-center space-x-4"
+      className="p-6 max-w-sm mx-auto rounded-xl shadow-lg flex items-center space-x-4 hover:-translate-y-1 hover:scale-105 hover:bg-indigo-500 hover:drop-shadow-md duration-300"
       style={getThemeSectionStyle(theme)}
     >
       <Link href={`/episodes/${episode.uid}`}>

@@ -63,7 +63,9 @@ export default async function Page() {
       <div className="p-2">
         <PrismicRichText field={episodesPage.data.description} />
       </div>
-      <SliceZone slices={episodesPage.data.slices} components={components} />
+      <div className="space-y-2">
+        <SliceZone slices={episodesPage.data.slices} components={components} />
+      </div>
     </main>
   );
 }
