@@ -1,22 +1,31 @@
+import { Collapsible } from "@/components/Collapsible";
+import { EpisodeCard } from "@/components/EpisodeCard";
+import { createClient } from "@/prismicio";
 import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 
 /**
  * Props for `Chapter`.
  */
-export type ChapterProps = SliceComponentProps<Content.ChapterSlice>;
+export type ChapterProps = SliceComponentProps<
+  Omit<Content.ChapterSlice, "items"> & {
+    items: {
+      episode: Content.EpisodeDocument;
+    }[];
+  }
+>;
 
 /**
  * Component for "Chapter" Slices.
  */
 const Chapter = ({ slice }: ChapterProps): JSX.Element => {
   return (
-    <section
-      data-slice-type={slice.slice_type}
-      data-slice-variation={slice.variation}
-    >
-      Placeholder component for chapter (variation: {slice.variation}) Slices
-    </section>
+    <Collapsible summary={slice.primary.title} state="open">
+      <PrismicRichText field={slice.primary.description} />
+      {slice.items.map((episode) => (
+        <EpisodeCard key={episode.episode.uid} episode={episode.episode} />
+      ))}
+    </Collapsible>
   );
 };
 

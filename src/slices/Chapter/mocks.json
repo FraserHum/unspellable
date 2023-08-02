@@ -18,13 +18,24 @@
 						}
 					}
 				]
-			},
-			"number_of_episodes": {
-				"__TYPE__": "FieldContent",
-				"value": "99",
-				"type": "Number"
 			}
 		},
-		"items": []
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"episode",
+						{
+							"__TYPE__": "LinkContent",
+							"value": {
+								"__TYPE__": "DocumentLink",
+								"id": "mock_document_id"
+							}
+						}
+					]
+				]
+			}
+		]
 	}
 ]

@@ -718,16 +718,21 @@ export interface ChapterSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   description: prismic.RichTextField;
+}
 
+/**
+ * Primary content in *Chapter → Items*
+ */
+export interface ChapterSliceDefaultItem {
   /**
-   * number of episodes field in *Chapter → Primary*
+   * episode field in *Chapter → Items*
    *
-   * - **Field Type**: Number
+   * - **Field Type**: Content Relationship
    * - **Placeholder**: *None*
-   * - **API ID Path**: chapter.primary.number_of_episodes
-   * - **Documentation**: https://prismic.io/docs/field#number
+   * - **API ID Path**: chapter.items[].episode
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  number_of_episodes: prismic.NumberField;
+  episode: prismic.ContentRelationshipField<"episode">;
 }
 
 /**
@@ -740,7 +745,7 @@ export interface ChapterSliceDefaultPrimary {
 export type ChapterSliceDefault = prismic.SharedSliceVariation<
   "default",
   Simplify<ChapterSliceDefaultPrimary>,
-  never
+  Simplify<ChapterSliceDefaultItem>
 >;
 
 /**

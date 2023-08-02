@@ -31,8 +31,11 @@ export default async function Page({ params }: { params: Params }) {
       <PrismicNextImage field={data.image} />
       <>{data.release_date}</>
       <SliceZone slices={data.slices} components={components} />
-      <Collapsible>
+      <Collapsible summary="track list">
         <SliceZone slices={links.data.slices} components={components} />
+      </Collapsible>
+      <Collapsible summary="trigger warnings">
+        <PrismicRichText field={data.description} />
       </Collapsible>
     </main>
   );

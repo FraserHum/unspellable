@@ -1,13 +1,52 @@
 import { Metadata } from "next";
 import { PrismicRichText, SliceZone } from "@prismicio/react";
-
 import { createClient } from "@/prismicio";
-import { EpisodeCard } from "@/components/EpisodeCard";
 import { getThemeSection, getThemeSectionStyle } from "@/utils/theme";
+import { components } from "@/slices";
+import { Content } from "@prismicio/client";
 export default async function Page() {
   const client = createClient();
-  const episodesPage = await client.getSingle("episodes");
-  const episodes = await client.getAllByType("episode");
+  const episodesPage = await client.getSingle<
+    Content.EpisodesDocument & {
+      data: {
+        slices: [
+          {
+            items: [
+              {
+                episode: Content.EpisodeDocument;
+              }
+            ];
+          }
+        ];
+      };
+    }
+  >("episodes", {
+    graphQuery: `{
+    episodes {
+      title
+      subtitle
+      description
+      slices {
+        ...on chapter {
+          variation {
+            ...on default {
+              primary {
+                ...primaryFields
+              }
+              items {
+                episode {
+                  ...on episode{
+                    ...episodeFields
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }`,
+  });
   const episodesTheme = await getThemeSection(client, "episodes");
 
   return (
@@ -24,10 +63,7 @@ export default async function Page() {
       <div className="p-2">
         <PrismicRichText field={episodesPage.data.description} />
       </div>
-
-      {episodes.map((episode) => (
-        <EpisodeCard key={episode.id} episode={episode} />
-      ))}
+      <SliceZone slices={episodesPage.data.slices} components={components} />
     </main>
   );
 }
