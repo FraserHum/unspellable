@@ -24,7 +24,7 @@ const Chapter = ({ slice }: ChapterProps): JSX.Element => {
       summary={slice.primary.title}
       state="open"
       summaryClassName="p-2 text-xl font-bold tracking-tight sm:text-2xl"
-      detailsClassName="transition ease-in-out delay-150 bg-ivory open:ring open:ring-black/5 dark:open:ring-white/10 open:shadow-lg p-6 rounded-lg space-y-2"
+      detailsClassName="transition xl:w-11/12 w-full ease-in-out delay-150 bg-ivory open:ring open:ring-black/5 dark:open:ring-white/10 open:shadow-lg p-6 rounded-lg space-y-2"
     >
       <PrismicRichText field={slice.primary.description} />
       {slice.items.map((episode) => (
