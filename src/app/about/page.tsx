@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 import { PrismicRichText } from "@prismicio/react";
-
 import { createClient } from "@/prismicio";
 import { getThemeSection, getThemeSectionStyle } from "@/utils/theme";
+
 export default async function Page() {
   const client = createClient();
   const aboutPage = await client.getSingle("about");
@@ -10,7 +10,7 @@ export default async function Page() {
 
   return (
     <main
-      className="container rounded-b-lg"
+      className="container flex-col justify-center items-center rounded-b-lg"
       style={getThemeSectionStyle(episodesTheme)}
     >
       <div>{aboutPage.data.title}</div>
