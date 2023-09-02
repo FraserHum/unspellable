@@ -99,6 +99,105 @@ interface AboutDocumentData {
 export type AboutDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<AboutDocumentData>, "about", Lang>;
 
+type CharactersDocumentDataSlicesSlice = never;
+
+/**
+ * Content for characters documents
+ */
+interface CharactersDocumentData {
+  /**
+   * title field in *characters*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: characters.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * subtitle field in *characters*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: characters.subtitle
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtitle: prismic.KeyTextField;
+
+  /**
+   * description field in *characters*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: characters.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Slice Zone field in *characters*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: characters.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<CharactersDocumentDataSlicesSlice>
+  /**
+   * Meta Description field in *characters*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: characters.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *characters*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: characters.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *characters*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: characters.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * characters document from Prismic
+ *
+ * - **API ID**: `characters`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CharactersDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<CharactersDocumentData>,
+    "characters",
+    Lang
+  >;
+
 type CollapsibleCollectionDocumentDataSlicesSlice = LinkWithImageSlice;
 
 /**
@@ -688,6 +787,7 @@ export type ThemeDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | AboutDocument
+  | CharactersDocument
   | CollapsibleCollectionDocument
   | EpisodeDocument
   | EpisodesDocument
@@ -992,32 +1092,51 @@ declare module "@prismicio/client" {
     export type {
       AboutDocument,
       AboutDocumentData,
+      AboutDocumentDataSlicesSlice,
+      CharactersDocument,
+      CharactersDocumentData,
+      CharactersDocumentDataSlicesSlice,
       CollapsibleCollectionDocument,
       CollapsibleCollectionDocumentData,
+      CollapsibleCollectionDocumentDataSlicesSlice,
       EpisodeDocument,
       EpisodeDocumentData,
+      EpisodeDocumentDataSlicesSlice,
       EpisodesDocument,
       EpisodesDocumentData,
+      EpisodesDocumentDataSlicesSlice,
       HomeDocument,
       HomeDocumentData,
+      HomeDocumentDataSlicesSlice,
       NavDocument,
       NavDocumentData,
+      NavDocumentDataSlicesSlice,
       ThemeDocument,
       ThemeDocumentData,
+      ThemeDocumentDataDefaultItem,
+      ThemeDocumentDataCharactersItem,
+      ThemeDocumentDataAboutItem,
+      ThemeDocumentDataEpisodesItem,
+      ThemeDocumentDataEpisodeCardItem,
       AllDocumentTypes,
       ChapterSlice,
+      ChapterSliceDefaultPrimary,
+      ChapterSliceDefaultItem,
       ChapterSliceVariation,
       ChapterSliceDefault,
       CollapsibleCollectionSlice,
       CollapsibleCollectionSliceVariation,
       CollapsibleCollectionSliceDefault,
       LinkWithImageSlice,
+      LinkWithImageSliceDefaultPrimary,
       LinkWithImageSliceVariation,
       LinkWithImageSliceDefault,
       NavLinksSlice,
+      NavLinksSliceDefaultPrimary,
       NavLinksSliceVariation,
       NavLinksSliceDefault,
       ThemeItemSlice,
+      ThemeItemSliceDefaultPrimary,
       ThemeItemSliceVariation,
       ThemeItemSliceDefault,
     };
